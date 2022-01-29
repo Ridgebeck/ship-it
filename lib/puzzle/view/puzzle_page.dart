@@ -24,7 +24,8 @@ import '../widgets/start_dialog.dart';
 Artboard? artboard;
 Artboard? artboardShip;
 Artboard? artboardShip180;
-//Artboard? artboardLid;
+
+Map<int, Artboard> shipArtboards = {};
 
 void sharedPrefInit(context) async {
   try {
@@ -99,10 +100,14 @@ class _PuzzlePageState extends State<PuzzlePage> with TickerProviderStateMixin {
     rootBundle.load('/rive/ship.riv').then((data) {
       final file = RiveFile.import(data);
 
-      print(file.artboards);
-      //artboardLid = file.artboards[0];
-      artboardShip180 = file.artboards[0]; //file.artboardByName("ship_180");
-      artboardShip = file.artboards[0]; //file.artboardByName("ship");
+      for (Artboard ab in file.artboards) {
+        // print(ab.name);
+        // print(ab.name[0]);
+        if (ab.name[0].contains(RegExp(r'[0-9]'))) {
+          shipArtboards[int.parse(ab.name[0])] = ab;
+        }
+        //artboards.add(ab);
+      } //file.artboardByName("ship_180");
       setState(() {});
     });
 
@@ -763,47 +768,47 @@ class ShipTugboatAndConnection extends StatelessWidget {
   }
 }
 
-List<Widget> _createEmptySpaces({
-  required int number,
-  required double contentWidth,
-  required bool withOtherContents,
-  isWarehouse = false,
-  isHazardMode = false,
-}) {
-  return List.generate(
-    number,
-    (index) => Column(
-      children: [
-        withOtherContents && index == 0
-            ? SizedBox(
-                height: kConnectorRatio * contentWidth,
-              )
-            : Container(),
-        Container(
-          width: contentWidth,
-          height: contentWidth,
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey[600]!),
-            //color: Colors.grey[600],
-          ),
-          child: isWarehouse && isHazardMode
-              ? FittedBox(
-                  child: Icon(
-                    Icons.no_cell_outlined,
-                    color: Colors.grey[800],
-                  ),
-                )
-              : null,
-        ),
-        index != number - 1
-            ? SizedBox(
-                height: kSmallGapRatio * contentWidth,
-              )
-            : Container(),
-      ],
-    ),
-  );
-}
+// List<Widget> _createEmptySpaces({
+//   required int number,
+//   required double contentWidth,
+//   required bool withOtherContents,
+//   isWarehouse = false,
+//   isHazardMode = false,
+// }) {
+//   return List.generate(
+//     number,
+//     (index) => Column(
+//       children: [
+//         withOtherContents && index == 0
+//             ? SizedBox(
+//                 height: kConnectorRatio * contentWidth,
+//               )
+//             : Container(),
+//         Container(
+//           width: contentWidth,
+//           height: contentWidth,
+//           decoration: BoxDecoration(
+//             border: Border.all(color: Colors.grey[600]!),
+//             //color: Colors.grey[600],
+//           ),
+//           child: isWarehouse && isHazardMode
+//               ? FittedBox(
+//                   child: Icon(
+//                     Icons.no_cell_outlined,
+//                     color: Colors.grey[800],
+//                   ),
+//                 )
+//               : null,
+//         ),
+//         index != number - 1
+//             ? SizedBox(
+//                 height: kSmallGapRatio * contentWidth,
+//               )
+//             : Container(),
+//       ],
+//     ),
+//   );
+// }
 
 class WarehouseWidget extends StatelessWidget {
   const WarehouseWidget({
@@ -857,13 +862,13 @@ class WarehouseWidget extends StatelessWidget {
                 contentWidth: contentWidth,
                 theme: Provider.of<AppState>(context, listen: true).puzzleTheme,
               ),
-              ..._createEmptySpaces(
-                number: blueprint.size - blueprint.containerContents.length,
-                contentWidth: contentWidth,
-                withOtherContents: blueprint.containerContents.isNotEmpty,
-                isWarehouse: true,
-                isHazardMode: levels[Provider.of<AppState>(context).currentLevel].isHazardMode,
-              ),
+              // ..._createEmptySpaces(
+              //   number: blueprint.size - blueprint.containerContents.length,
+              //   contentWidth: contentWidth,
+              //   withOtherContents: blueprint.containerContents.isNotEmpty,
+              //   isWarehouse: true,
+              //   isHazardMode: levels[Provider.of<AppState>(context).currentLevel].isHazardMode,
+              // ),
               SizedBox(height: width * kConnectorRatio),
             ],
           ),
@@ -908,20 +913,18 @@ class ShipWidget extends StatelessWidget {
     double shipHeight =
         blueprint.size * contentWidth + (blueprint.size - 1) * smallGap + 2 * loadingGap;
 
-    print(shipHeight / shipWidth);
-
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        // Positioned(
-        //   top: shipHeight * 0.5,
-        //   left: (shipWidth - shipWidth * 0.4) / 2,
-        //   child: Container(
-        //     color: Colors.green,
-        //     height: shipWidth,
-        //     width: shipWidth * 0.4,
-        //   ),
-        // ),
+        Positioned(
+          top: shipHeight * 0.98,
+          left: (shipWidth - shipWidth * 0.4) / 2,
+          child: Container(
+            color: Colors.green,
+            height: shipWidth,
+            width: shipWidth * 0.4,
+          ),
+        ),
         Container(
           decoration: BoxDecoration(
             color: Colors.grey[800],
@@ -938,7 +941,7 @@ class ShipWidget extends StatelessWidget {
                 : null,
           ),
           width: shipWidth,
-          height: shipHeight,
+          height: shipHeight + shipWidth,
           child: Column(
             children: [
               // SizedBox(
@@ -946,24 +949,55 @@ class ShipWidget extends StatelessWidget {
               //       (kSmallGapRatio +
               //           (kMaxNumberOfContents - blueprint.size) * kContentWidthFactor),
               // ),
+
+              Container(
+                  color: blueprint.isWarehouse
+                      ? Colors.grey[900]
+                      : theme.colorPalette[blueprint.shipColorNumber!],
+                  height: 0.8 * shipWidth),
               Container(
                 height: loadingGap,
                 color: Colors.purple,
               ),
               ...contentWidgetList,
-              // ..._createEmptySpaces(
-              //   number: blueprint.size - blueprint.containerContents.length,
-              //   withOtherContents: blueprint.containerContents.isNotEmpty,
-              //   contentWidth: contentWidth,
-              // ),
-              Container(
+              SizedBox(
                 height: loadingGap,
-                color: Colors.yellowAccent,
               ),
-              //SizedBox(height: loadingGap),
+              Container(color: Colors.white, height: 0.2 * shipWidth),
             ],
           ),
         ),
+
+        shipArtboards[2] == null ||
+                shipArtboards[3] == null ||
+                shipArtboards[4] == null ||
+                shipArtboards[5] == null ||
+                shipArtboards[6] == null
+            ? Container()
+            : isTopRow
+                ? Column(
+                    children: [
+                      SizedBox(height: 0.8 * shipWidth),
+                      SizedBox(
+                        width: shipWidth,
+                        height: shipHeight,
+                        child: Rive(artboard: shipArtboards[blueprint.size]!),
+                      ),
+                      SizedBox(height: 0.2 * shipWidth),
+                    ],
+                  )
+                : Column(
+                    children: [
+                      SizedBox(height: 0.8 * shipWidth),
+                      SizedBox(
+                        width: shipWidth,
+                        height: shipHeight,
+                        child: Rive(artboard: shipArtboards[blueprint.size]!),
+                      ),
+                      SizedBox(height: 0.2 * shipWidth),
+                    ],
+                  ),
+
         // artboardShip == null || artboardShip180 == null
         //     ? Container()
         //     : isTopRow
@@ -977,23 +1011,6 @@ class ShipWidget extends StatelessWidget {
         //             height: shipHeight,
         //             child: Rive(artboard: artboardShip180!),
         //           ),
-
-        // Positioned.fill(
-        //   child: ClipPath(
-        //     clipper: BullsEyeClipper(
-        //       bullsEyes: blueprint.size,
-        //       width: shipWidth,
-        //       height: shipHeight,
-        //     ),
-        //     child: Container(
-        //       decoration: BoxDecoration(
-        //         gradient: LinearGradient(
-        //           colors: [Colors.white, Colors.grey[700]!],
-        //         ),
-        //       ),
-        //     ),
-        //   ),
-        // ),
       ],
     );
   }
@@ -1092,46 +1109,6 @@ class StationHoleClipper extends CustomClipper<Path> {
       center: Offset(stationDiameter / 2, stationDiameter / 2),
       radius: stationDiameter / 2 - stationDiameter / 25,
     ));
-    path.addRect(Rect.fromLTWH(0.0, 0.0, size.width, size.height));
-    path.fillType = PathFillType.evenOdd;
-    return path;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    return false;
-  }
-}
-
-class BullsEyeClipper extends CustomClipper<Path> {
-  BullsEyeClipper({
-    required this.bullsEyes,
-    required this.width,
-    required this.height,
-  });
-
-  final int bullsEyes;
-  final double width;
-  final double height;
-
-  @override
-  getClip(Size size) {
-    Path path = Path();
-    for (int i = 0; i < bullsEyes; i++) {
-      path.addOval(Rect.fromCircle(
-        center: Offset(
-            // todo: remove 2 (border)
-            width / 2,
-            height -
-                (kConnectorRatio * width +
-                    kContentWidthFactor * width / 2 +
-                    i *
-                        (kContentWidthFactor * width +
-                            kConnectorRatio * kContentWidthFactor * width)) -
-                2),
-        radius: kContentWidthFactor * width / 2 * bullsEyeSizeFactor,
-      ));
-    }
     path.addRect(Rect.fromLTWH(0.0, 0.0, size.width, size.height));
     path.fillType = PathFillType.evenOdd;
     return path;
