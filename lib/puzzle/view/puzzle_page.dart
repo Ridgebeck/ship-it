@@ -944,12 +944,6 @@ class ShipWidget extends StatelessWidget {
           height: shipHeight + shipWidth,
           child: Column(
             children: [
-              // SizedBox(
-              //   height: shipWidth *
-              //       (kSmallGapRatio +
-              //           (kMaxNumberOfContents - blueprint.size) * kContentWidthFactor),
-              // ),
-
               Container(
                   color: blueprint.isWarehouse
                       ? Colors.grey[900]
