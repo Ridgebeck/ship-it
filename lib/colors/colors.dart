@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 abstract class PuzzleColors {
   static Set contentColorsStandard = {
     Colors.yellow,
-    Colors.purple,
+    //Colors.purple,
     Colors.green,
     Colors.cyan,
     //Colors.black,
-    Colors.deepPurple,
+    //Colors.deepPurple,
     Colors.indigo,
     Colors.red,
     Colors.orange,

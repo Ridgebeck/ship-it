@@ -16,16 +16,20 @@ import 'package:provider/provider.dart';
 import 'package:ship_it/constants.dart';
 import 'package:ship_it/theme/basic_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ship_it/theme/puzzle_theme.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../widgets/continue_dialog.dart';
 import '../widgets/start_dialog.dart';
 
 //TODO: CHANGE GLOBAL VARIABLE
 Artboard? artboard;
-Artboard? artboardShip;
-Artboard? artboardShip180;
+Artboard? artboardConnector;
+Artboard? artboardBackground;
+Artboard? colorIndicator;
 
 Map<int, Artboard> shipArtboards = {};
+Map<String, Artboard> shipEnds = {};
 
 void sharedPrefInit(context) async {
   try {
@@ -82,6 +86,10 @@ class _PuzzlePageState extends State<PuzzlePage> with TickerProviderStateMixin {
   late Animation<double> rotateAnimation;
   late AnimationController rotateController;
 
+  // todo: test variable --> need triggers for each rive widget
+  SMITrigger? trigger;
+  RiveAnimationController? riveController;
+
   @override
   void initState() {
     super.initState();
@@ -89,32 +97,6 @@ class _PuzzlePageState extends State<PuzzlePage> with TickerProviderStateMixin {
 
     /// check if there was a saved level
     sharedPrefInit(context);
-
-    // TODO: MOVE TO SEPARATE LOADER
-    rootBundle.load('/rive/space_dock.riv').then((data) {
-      final file = RiveFile.import(data);
-      artboard = file.mainArtboard;
-      setState(() {});
-    });
-    // TODO: MOVE TO SEPARATE LOADER
-    rootBundle.load('/rive/ship.riv').then((data) {
-      final file = RiveFile.import(data);
-
-      for (Artboard ab in file.artboards) {
-        // print(ab.name);
-        // print(ab.name[0]);
-        if (ab.name[0].contains(RegExp(r'[0-9]'))) {
-          shipArtboards[int.parse(ab.name[0])] = ab;
-        }
-        //artboards.add(ab);
-      } //file.artboardByName("ship_180");
-      setState(() {});
-    });
-
-    // // start with a new puzzle
-    // WidgetsBinding.instance?.addPostFrameCallback((_) {
-    //   Provider.of<AppState>(context, listen: false).initializeLevel(1);
-    // });
 
     rotateController = AnimationController(
       vsync: this,
@@ -141,6 +123,63 @@ class _PuzzlePageState extends State<PuzzlePage> with TickerProviderStateMixin {
           Provider.of<AppState>(context, listen: false).moveToNextLevel();
         }
       });
+
+    loadRiveData();
+  }
+
+  void loadRiveData() async {
+    // TODO: MOVE TO SEPARATE LOADER
+    await rootBundle.load('/rive/space_dock.riv').then((data) {
+      final file = RiveFile.import(data);
+      setState(() {
+        artboard = file.mainArtboard;
+      });
+    });
+
+    void _onStateChanged(String stateMachineName, String stateName) {
+      print("State of State Machine $stateMachineName changed to $stateName!");
+    }
+
+    // TODO: MOVE TO SEPARATE LOADER
+    await rootBundle.load('/rive/color_indicator.riv').then((data) async {
+      // load rive file from binary data
+      final file = RiveFile.import(data);
+      // get main art board
+      Artboard _artboard = file.mainArtboard;
+      // get state machine controller from art board
+      final controller = StateMachineController.fromArtboard(file.mainArtboard, "State Machine 1",
+          onStateChange: _onStateChanged);
+      //file.mainArtboard.addController(riveController!);
+      // add controller to art board
+      _artboard.addController(controller!);
+      // get trigger
+      trigger = controller.findInput<bool>('Package') as SMITrigger;
+      setState(() {
+        colorIndicator = _artboard; //file.mainArtboard;
+      });
+    });
+    // TODO: MOVE TO SEPARATE LOADER
+    await rootBundle.load('/rive/connector.riv').then((data) {
+      final file = RiveFile.import(data);
+      setState(() {
+        artboardConnector = file.mainArtboard;
+      });
+    });
+    // TODO: MOVE TO SEPARATE LOADER
+    await rootBundle.load('/rive/ship.riv').then((data) {
+      final file = RiveFile.import(data);
+
+      for (Artboard ab in file.artboards) {
+        //print(ab.name);
+        // print(ab.name[0]);
+        if (ab.name[0].contains(RegExp(r'[0-9]'))) {
+          shipArtboards[int.parse(ab.name[0])] = ab;
+        } else {
+          shipEnds[ab.name] = ab;
+        }
+      }
+      setState(() {});
+    });
   }
 
   @override
@@ -152,6 +191,14 @@ class _PuzzlePageState extends State<PuzzlePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    //TODO: change to individual triggers
+    if (Provider.of<AppState>(context, listen: true).currentPuzzleState.numberOfMoves > 1) {
+      trigger?.value = true;
+    }
+    if (Provider.of<AppState>(context, listen: true).currentPuzzleState.numberOfMoves > 2) {
+      trigger?.value = false;
+    }
+
     // detect if puzzle has been completed
     if (Provider.of<AppState>(context, listen: true).currentStatus == PuzzleStatus.complete) {
       // calculate time difference
@@ -225,7 +272,7 @@ class _PuzzlePageState extends State<PuzzlePage> with TickerProviderStateMixin {
             Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/nasa_bg.jpg"),
+                  image: AssetImage("assets/images/basic_art_style.PNG"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -424,7 +471,6 @@ class SettingsButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {
-        print("testing");
         Future.delayed(Duration.zero, () {
           return showDialog(
             barrierDismissible: false,
@@ -595,8 +641,8 @@ class Puzzle extends StatelessWidget {
             ),
           ],
         ),
-        const IgnorePointer(
-          child: SpaceDock(),
+        IgnorePointer(
+          child: SpaceDock(playAreaWidth: playAreaWidth),
         ),
       ],
     );
@@ -606,35 +652,54 @@ class Puzzle extends StatelessWidget {
 class SpaceDock extends StatelessWidget {
   const SpaceDock({
     Key? key,
+    required this.playAreaWidth,
   }) : super(key: key);
+
+  final double playAreaWidth;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.centerRight,
       children: [
-        Container(
-          // decoration: BoxDecoration(
-          //   gradient: LinearGradient(
-          //     begin: Alignment.topCenter,
-          //     end: Alignment.bottomCenter,
-          //     colors: [
-          //       Colors.white,
-          //       Colors.grey[700]!,
-          //     ],
-          //   ),
-          // ),
-          child: Center(
-            child: Text("level: ${Provider.of<AppState>(context, listen: true).currentLevel} / "
-                "reset: ${Provider.of<AppState>(context, listen: true).currentPuzzleState.numberOfResets} / "
-                "moves: ${Provider.of<AppState>(context, listen: true).currentPuzzleState.numberOfMoves}"),
-          ),
-        ),
         artboard != null
             ? Rive(
                 artboard: artboard!,
                 useArtboardSize: false,
               )
             : Container(),
+        // level number
+        Positioned(
+          left: playAreaWidth * 0.075,
+          width: playAreaWidth * 0.10,
+          height: playAreaWidth * 0.10,
+          child: FittedBox(
+            child: Text(
+              "${Provider.of<AppState>(context, listen: true).currentLevel}",
+              style: GoogleFonts.orbitron(
+                fontSize: 100,
+                color: Colors.deepPurple[800],
+                textBaseline: TextBaseline.alphabetic,
+              ),
+            ),
+          ),
+        ),
+        // moves counter
+        Positioned(
+          right: playAreaWidth * 0.075,
+          width: playAreaWidth * 0.15,
+          height: playAreaWidth * 0.07,
+          child: FittedBox(
+            child: Text(
+              "${Provider.of<AppState>(context, listen: true).currentPuzzleState.numberOfMoves}",
+              style: GoogleFonts.orbitron(
+                fontSize: 100,
+                color: Colors.lightBlueAccent,
+                textBaseline: TextBaseline.alphabetic,
+              ),
+            ),
+          ),
+        )
       ],
     );
   }
@@ -736,20 +801,20 @@ class ShipTugboatAndConnection extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Provider.of<AppState>(context, listen: true).currentPuzzleState.level.isRotatingMode
-            ?
-            // todo: create tug boat widget
-            SizedBox(
-                width: shipWidth,
-                height: shipWidth,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
-                  ),
-                ),
-              )
-            : Container(),
+        // Provider.of<AppState>(context, listen: true).currentPuzzleState.level.isRotatingMode
+        //     ?
+        // todo: create tug boat widget
+        // SizedBox(
+        //   width: shipWidth,
+        //   height: shipWidth,
+        //   child: Container(
+        //     decoration: const BoxDecoration(
+        //       shape: BoxShape.circle,
+        //       color: Colors.white,
+        //     ),
+        //   ),
+        // ),
+        // : Container(),
 
         ShipWidget(
           shipWidth: shipWidth,
@@ -860,6 +925,8 @@ class WarehouseWidget extends StatelessWidget {
               ..._createContentWidgets(
                 contents: blueprint.containerContents,
                 contentWidth: contentWidth,
+                shipWidth: width,
+                shipSize: blueprint.size,
                 theme: Provider.of<AppState>(context, listen: true).puzzleTheme,
               ),
               // ..._createEmptySpaces(
@@ -895,73 +962,123 @@ class ShipWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double contentWidth = shipWidth * kContentWidthFactor;
-    double loadingGap = shipWidth * kConnectorRatio;
     double smallGap = shipWidth * kSmallGapRatio;
+    double regularGap = shipWidth * kRegularGapRatio;
+    double gapBetweenContainers = shipWidth * kGapBetweenContainerRatio;
 
     List<Widget> contentWidgetList = _createContentWidgets(
       contents: blueprint.containerContents,
       contentWidth: contentWidth,
+      shipWidth: shipWidth,
+      shipSize: blueprint.size,
       theme: Provider.of<AppState>(context, listen: true).puzzleTheme,
     );
 
-    // calculate ship height
-    // double shipHeight = shipWidth *
-    //     (kMaxNumberOfContents * kContentWidthFactor +
-    //         (kMaxNumberOfContents - 1) * kSmallGapRatio +
-    //         2 * kConnectorRatio);
-
-    double shipHeight =
-        blueprint.size * contentWidth + (blueprint.size - 1) * smallGap + 2 * loadingGap;
+    double shipHeight = blueprint.size * contentWidth +
+        blueprint.size ~/ 2 * regularGap +
+        (blueprint.size - 1) ~/ 2 * (gapBetweenContainers + 2 * smallGap) +
+        2 * smallGap;
 
     return Stack(
       clipBehavior: Clip.none,
       children: [
+        // connector to station
         Positioned(
           top: shipHeight * 0.98,
           left: (shipWidth - shipWidth * 0.4) / 2,
           child: Container(
-            color: Colors.green,
+            //color: Colors.green,
             height: shipWidth,
             width: shipWidth * 0.4,
+            child: artboardConnector != null
+                ? Rive(
+                    artboard: artboardConnector!,
+                    useArtboardSize: false,
+                  )
+                : Container(),
           ),
         ),
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.grey[800],
-            boxShadow: blueprint.isSelected
-                ? [
-                    BoxShadow(
-                      color: isWarehouse
-                          ? Colors.white
-                          : theme.colorPalette[blueprint.shipColorNumber!],
-                      blurRadius: 5.0,
-                      spreadRadius: 5.0,
-                    )
-                  ]
-                : null,
+        // color/done indicator
+        Positioned(
+          bottom: shipHeight + shipWidth * 0.1,
+          left: (shipWidth - shipWidth * 0.8) / 2,
+          child: SizedBox(
+            width: shipWidth * 0.8,
+            height: shipWidth * 0.45,
+            // TODO: add rive animation
+            child: colorIndicator != null && !blueprint.isWarehouse
+                ? Stack(
+                    children: [
+                      Center(
+                        child: Container(
+                          height: shipWidth * 0.4,
+                          width: shipWidth * 0.7,
+                          color: theme.colorPalette[blueprint.shipColorNumber!],
+                        ),
+                      ),
+                      Transform.rotate(
+                        angle: isTopRow ? 0.0 : 180 * pi / 180,
+                        child: Rive(
+                          artboard: colorIndicator!,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ],
+                  )
+                : Container(),
           ),
+        ),
+        // shadow
+        Positioned(
+          top: 0.0, //0.8 * shipWidth,
+          child: SizedBox(
+            width: shipWidth,
+            height: shipHeight, // - 0.8 * shipWidth,
+            child: FractionallySizedBox(
+              widthFactor: 0.8 * 0.9, //0.9,
+              heightFactor: 1.0, //0.9,
+              child: Container(
+                decoration: BoxDecoration(
+                  //color: theme.emptyVesselColor,
+                  boxShadow: blueprint.isSelected
+                      ? [
+                          BoxShadow(
+                            color: theme.glowColor,
+                            // color: isWarehouse
+                            //     ? Colors.white
+                            //     : theme.colorPalette[Provider.of<AppState>(context)
+                            //         .selectedContent!
+                            //         .colorNoOfSelection!],
+                            //theme
+                            // .colorPalette[blueprint
+                            // .shipColorNumber!],
+                            blurRadius: 12.0,
+                            spreadRadius: 1.0,
+                          )
+                        ]
+                      : null,
+                ),
+              ),
+            ),
+          ),
+        ),
+        // contents
+        SizedBox(
           width: shipWidth,
-          height: shipHeight + shipWidth,
+          height: shipHeight,
           child: Column(
             children: [
-              Container(
-                  color: blueprint.isWarehouse
-                      ? Colors.grey[900]
-                      : theme.colorPalette[blueprint.shipColorNumber!],
-                  height: 0.8 * shipWidth),
-              Container(
-                height: loadingGap,
-                color: Colors.purple,
+              // first distance
+              SizedBox(
+                height: smallGap,
               ),
               ...contentWidgetList,
               SizedBox(
-                height: loadingGap,
+                height: smallGap,
               ),
-              Container(color: Colors.white, height: 0.2 * shipWidth),
             ],
           ),
         ),
-
         shipArtboards[2] == null ||
                 shipArtboards[3] == null ||
                 shipArtboards[4] == null ||
@@ -969,42 +1086,16 @@ class ShipWidget extends StatelessWidget {
                 shipArtboards[6] == null
             ? Container()
             : isTopRow
-                ? Column(
-                    children: [
-                      SizedBox(height: 0.8 * shipWidth),
-                      SizedBox(
-                        width: shipWidth,
-                        height: shipHeight,
-                        child: Rive(artboard: shipArtboards[blueprint.size]!),
-                      ),
-                      SizedBox(height: 0.2 * shipWidth),
-                    ],
+                ? SizedBox(
+                    width: shipWidth,
+                    height: shipHeight,
+                    child: Rive(artboard: shipArtboards[blueprint.size]!),
                   )
-                : Column(
-                    children: [
-                      SizedBox(height: 0.8 * shipWidth),
-                      SizedBox(
-                        width: shipWidth,
-                        height: shipHeight,
-                        child: Rive(artboard: shipArtboards[blueprint.size]!),
-                      ),
-                      SizedBox(height: 0.2 * shipWidth),
-                    ],
+                : SizedBox(
+                    width: shipWidth,
+                    height: shipHeight,
+                    child: Rive(artboard: shipArtboards[blueprint.size]!),
                   ),
-
-        // artboardShip == null || artboardShip180 == null
-        //     ? Container()
-        //     : isTopRow
-        //         ? SizedBox(
-        //             width: shipWidth,
-        //             height: shipHeight,
-        //             child: Rive(artboard: artboardShip!),
-        //           )
-        //         : SizedBox(
-        //             width: shipWidth,
-        //             height: shipHeight,
-        //             child: Rive(artboard: artboardShip180!),
-        //           ),
       ],
     );
   }
@@ -1013,49 +1104,71 @@ class ShipWidget extends StatelessWidget {
 List<Widget> _createContentWidgets({
   required List<ContainerContent> contents,
   required double contentWidth,
-  required theme,
+  required double shipWidth,
+  required int shipSize,
+  required PuzzleTheme theme,
 }) {
   return List.generate(
-    contents.length,
+    shipSize,
+    //contents.length,
     // todo: make own ContainerWidget with styling / animation
     (index) => Column(
       children: [
-        Container(
-          decoration: BoxDecoration(
-            color: theme.colorPalette[contents[index].colorNumber],
-            // contents[index].isSelected
-            //     ? theme.colorPalette[contents[index].colorNumber]
-            //     : theme.colorPalette[contents[index].colorNumber], //.withOpacity(0.85),
-            // border: Border.all(
-            //   color: contents[index].isSelected ? PuzzleColors.white : Colors.transparent,
-            // ),
-          ),
-          width: contentWidth,
-          height: contentWidth,
-          child: contents[index].isHazardous
-              ? FittedBox(
-                  child: Icon(
-                    Icons.smartphone,
-                    color: Colors.grey[800],
-                  ),
-                )
-              : null,
-        ),
-        index != contents.length - 1
+        index < contents.length
             ? Container(
-                height: kSmallGapRatio * contentWidth / kContentWidthFactor,
-                color: PuzzleColors.white,
-                child: index + 1 < contents.length
-                    ? contents[index].colorNumber == contents[index + 1].colorNumber
-                        ? Center(
-                            child: Container(
-                              width: contentWidth * 0.2,
-                              color: theme.colorPalette[contents[index].colorNumber],
-                            ),
-                          )
-                        : null
+                color: theme.colorPalette[contents[index].colorNumber],
+                width: contentWidth,
+                height: contentWidth,
+                child: contents[index].isHazardous
+                    ? FittedBox(
+                        child: Icon(
+                          Icons.smartphone,
+                          color: Colors.grey[800],
+                        ),
+                      )
                     : null,
               )
+            : Container(
+                color: theme.emptyVesselColor,
+                width: contentWidth,
+                height: contentWidth,
+              ),
+        //index != contents.length - 1
+        index != shipSize - 1
+            ? index % 2 == 0
+                ? SizedBox(
+                    height: kRegularGapRatio * shipWidth,
+                    //color: PuzzleColors.white,
+                    child: index + 1 < contents.length
+                        ? Center(
+                            child: Container(
+                              width: shipWidth * 0.2,
+                              color: contents[index].colorNumber == contents[index + 1].colorNumber
+                                  ? theme.colorPalette[contents[index].colorNumber]
+                                  : theme.emptyVesselColor,
+                            ),
+                          )
+                        : Container(
+                            width: shipWidth * 0.2,
+                            color: theme.emptyVesselColor,
+                          ),
+                  )
+                : SizedBox(
+                    height: (kGapBetweenContainerRatio + 2 * kSmallGapRatio) * shipWidth,
+                    child: index + 1 < contents.length
+                        ? Center(
+                            child: Container(
+                              width: shipWidth * 0.2,
+                              color: contents[index].colorNumber == contents[index + 1].colorNumber
+                                  ? theme.colorPalette[contents[index].colorNumber]
+                                  : theme.emptyVesselColor,
+                            ),
+                          )
+                        : Container(
+                            width: shipWidth * 0.2,
+                            color: theme.emptyVesselColor,
+                          ),
+                  )
             : Container(),
       ],
     ),
@@ -1101,7 +1214,7 @@ class StationHoleClipper extends CustomClipper<Path> {
     Path path = Path();
     path.addOval(Rect.fromCircle(
       center: Offset(stationDiameter / 2, stationDiameter / 2),
-      radius: stationDiameter / 2 - stationDiameter / 25,
+      radius: stationDiameter / 2 - stationDiameter / 24,
     ));
     path.addRect(Rect.fromLTWH(0.0, 0.0, size.width, size.height));
     path.fillType = PathFillType.evenOdd;

@@ -13,6 +13,12 @@ abstract class PuzzleTheme extends Equatable {
   /// TODO: replace with animated background? or builder
   Color get backgroundColor;
 
+  /// the background color of an empty vessel with no color
+  Color get emptyVesselColor;
+
+  /// the glow color of a selected vessel
+  Color get glowColor;
+
   /// Whether this theme displays the tug boats for rotation
   bool get allowRotating;
 

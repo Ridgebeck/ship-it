@@ -18,12 +18,18 @@ class BasicTheme extends PuzzleTheme {
   bool get allowRotating => false;
 
   @override
+  Color get emptyVesselColor => Colors.grey[800]!;
+
+  @override
+  Color get glowColor => Colors.white;
+
+  @override
   List<Color> get colorPalette => [
         Colors.red,
         Colors.green,
         Colors.indigo,
         Colors.yellow,
-        Colors.deepPurple,
+        //Colors.deepPurple,
         Colors.green[900]!,
         Colors.blue[700]!,
         Colors.orange,

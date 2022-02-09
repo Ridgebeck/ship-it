@@ -50,6 +50,9 @@ class AppState extends ChangeNotifier {
     _currentPuzzleState = _currentPuzzleState.copyWith(puzzleStatus: status);
   }
 
+  /// get info about current selection
+  Selection? get selectedContent => _selectedContent;
+
   /// start time of current level
   DateTime _startTimeLevel = DateTime.now();
   DateTime get startTime => _startTimeLevel;
