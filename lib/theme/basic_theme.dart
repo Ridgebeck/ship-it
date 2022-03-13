@@ -12,7 +12,7 @@ class BasicTheme extends PuzzleTheme {
   String get name => 'Basic';
 
   @override
-  Color get backgroundColor => Colors.black;
+  Color get backgroundColor => Colors.grey[900]!;
 
   @override
   bool get allowRotating => false;
@@ -22,6 +22,18 @@ class BasicTheme extends PuzzleTheme {
 
   @override
   Color get glowColor => Colors.white;
+
+  @override
+  Color get textColor => Colors.grey[300]!;
+
+  @override
+  Color get accentColor => Colors.deepPurple;
+
+  @override
+  Color get textHoverColor => Colors.white;
+
+  @override
+  Matrix4 get hoveredTransform => Matrix4.identity()..scale(1.05);
 
   @override
   List<Color> get colorPalette => [
@@ -38,6 +50,9 @@ class BasicTheme extends PuzzleTheme {
         Colors.greenAccent,
         Colors.black,
       ];
+
+  @override
+  IconData get hazardIconData => Icons.whatshot;
 
   @override
   PuzzleLayoutDelegate get layoutDelegate => const SimplePuzzleLayoutDelegate();

@@ -6,7 +6,7 @@ enum PuzzleStatus { inactive, active, complete }
 
 class PuzzleState extends Equatable {
   const PuzzleState({
-    this.level = const Level(id: 0, blueprints: []),
+    this.level = const Level(id: 0, difficulty: 0, minimumMoves: 0, medianMoves: 0, blueprints: []),
     this.puzzleStatus = PuzzleStatus.inactive,
     this.numberOfMoves = 0,
     this.numberOfResets = 0,

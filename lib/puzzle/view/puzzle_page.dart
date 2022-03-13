@@ -31,6 +31,7 @@ Artboard? colorIndicator;
 Map<int, Artboard> shipArtboards = {};
 Map<String, Artboard> shipEnds = {};
 
+// TODO: put into separate logic
 void sharedPrefInit(context) async {
   try {
     /// Checks if shared preference exist
@@ -129,7 +130,7 @@ class _PuzzlePageState extends State<PuzzlePage> with TickerProviderStateMixin {
 
   void loadRiveData() async {
     // TODO: MOVE TO SEPARATE LOADER
-    await rootBundle.load('/rive/space_dock.riv').then((data) {
+    await rootBundle.load('assets/rive/space_dock.riv').then((data) {
       final file = RiveFile.import(data);
       setState(() {
         artboard = file.mainArtboard;
@@ -141,7 +142,7 @@ class _PuzzlePageState extends State<PuzzlePage> with TickerProviderStateMixin {
     }
 
     // TODO: MOVE TO SEPARATE LOADER
-    await rootBundle.load('/rive/color_indicator.riv').then((data) async {
+    await rootBundle.load('assets/rive/color_indicator.riv').then((data) async {
       // load rive file from binary data
       final file = RiveFile.import(data);
       // get main art board
@@ -159,14 +160,14 @@ class _PuzzlePageState extends State<PuzzlePage> with TickerProviderStateMixin {
       });
     });
     // TODO: MOVE TO SEPARATE LOADER
-    await rootBundle.load('/rive/connector.riv').then((data) {
+    await rootBundle.load('assets/rive/connector.riv').then((data) {
       final file = RiveFile.import(data);
       setState(() {
         artboardConnector = file.mainArtboard;
       });
     });
     // TODO: MOVE TO SEPARATE LOADER
-    await rootBundle.load('/rive/ship.riv').then((data) {
+    await rootBundle.load('assets/rive/ship.riv').then((data) {
       final file = RiveFile.import(data);
 
       for (Artboard ab in file.artboards) {
@@ -208,7 +209,7 @@ class _PuzzlePageState extends State<PuzzlePage> with TickerProviderStateMixin {
       // save data in Firestore
       FirebaseFirestore.instance.collection("testStats").add({
         "UID": FirebaseAuth.instance.currentUser!.uid,
-        "level": Provider.of<AppState>(context, listen: false).currentLevel,
+        "level": Provider.of<AppState>(context, listen: false).currentLevelId,
         "moves": Provider.of<AppState>(context, listen: false).currentMoves,
         "resets": Provider.of<AppState>(context, listen: false).currentResets,
         "secondsNeeded": secondsForLvl,
@@ -216,7 +217,7 @@ class _PuzzlePageState extends State<PuzzlePage> with TickerProviderStateMixin {
       });
 
       Future.delayed(Duration.zero, () {
-        int nextLvl = Provider.of<AppState>(context, listen: false).currentLevel + 1;
+        int nextLvl = Provider.of<AppState>(context, listen: false).currentLevelId + 1;
         // check if there are any levels left
         if (nextLvl + 1 >= levels.length) {
           return showDialog(
@@ -230,7 +231,7 @@ class _PuzzlePageState extends State<PuzzlePage> with TickerProviderStateMixin {
           );
         }
         // show message every 3 levels
-        if (Provider.of<AppState>(context, listen: false).currentLevel % 3 == 0) {
+        if (Provider.of<AppState>(context, listen: false).currentLevelId % 3 == 0) {
           return showDialog(
             barrierDismissible: false,
             context: context,
@@ -675,7 +676,7 @@ class SpaceDock extends StatelessWidget {
           height: playAreaWidth * 0.10,
           child: FittedBox(
             child: Text(
-              "${Provider.of<AppState>(context, listen: true).currentLevel}",
+              "${Provider.of<AppState>(context, listen: true).currentLevelId}",
               style: GoogleFonts.orbitron(
                 fontSize: 100,
                 color: Colors.deepPurple[800],

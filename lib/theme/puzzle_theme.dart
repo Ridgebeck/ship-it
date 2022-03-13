@@ -13,17 +13,32 @@ abstract class PuzzleTheme extends Equatable {
   /// TODO: replace with animated background? or builder
   Color get backgroundColor;
 
+  /// the glow color of a selected vessel
+  Color get glowColor;
+
   /// the background color of an empty vessel with no color
   Color get emptyVesselColor;
 
-  /// the glow color of a selected vessel
-  Color get glowColor;
+  /// the default text color
+  Color get textColor;
+
+  /// default accent color
+  Color get accentColor;
+
+  /// the default text color when hovered over
+  Color get textHoverColor;
+
+  /// the default hover transformation
+  Matrix4 get hoveredTransform;
 
   /// Whether this theme displays the tug boats for rotation
   bool get allowRotating;
 
   /// Color palette
   List<Color> get colorPalette;
+
+  /// default hazard mode icon
+  IconData get hazardIconData;
 
   /// The puzzle layout delegate of this theme.
   ///

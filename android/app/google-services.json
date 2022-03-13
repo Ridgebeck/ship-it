@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "512381849230",
+    "project_id": "ship-it-ca92f",
+    "storage_bucket": "ship-it-ca92f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512381849230:android:69d1c908bb5703b6cb03df",
+        "android_client_info": {
+          "package_name": "space.ship_it.ship_it"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "512381849230-m20ia7au90j16cnb2c9qeocta8gj7ar2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxLXlnOeQ57q9wSsKYZGAEulQrSCgo0Gs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "512381849230-m20ia7au90j16cnb2c9qeocta8gj7ar2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "512381849230-msukrj6q2bc307rl0qvif46f6a5kt9fa.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "space.ship-it.ship-it"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

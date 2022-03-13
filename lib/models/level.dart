@@ -1,9 +1,13 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:ship_it/models/models.dart';
 
 class Level extends Equatable {
   const Level({
     required this.id,
+    required this.difficulty,
+    required this.minimumMoves,
+    required this.medianMoves,
     required this.blueprints,
     this.isRotatingMode = false,
     this.isCoveredMode = false,
@@ -11,6 +15,9 @@ class Level extends Equatable {
   });
 
   final int id;
+  final int minimumMoves;
+  final int medianMoves;
+  final double difficulty;
   final List<Blueprint> blueprints;
   final bool isRotatingMode;
   final bool isCoveredMode;
@@ -29,6 +36,9 @@ class Level extends Equatable {
   }) {
     return Level(
       id: id,
+      difficulty: difficulty,
+      minimumMoves: minimumMoves,
+      medianMoves: medianMoves,
       blueprints: blueprints ??
           List.generate(this.blueprints.length, (index) => this.blueprints[index].copyWith()),
       isRotatingMode: isRotatingMode ?? this.isRotatingMode,
@@ -40,6 +50,9 @@ class Level extends Equatable {
   @override
   List<Object?> get props => [
         id,
+        difficulty,
+        minimumMoves,
+        medianMoves,
         blueprints,
         isRotatingMode,
         isCoveredMode,

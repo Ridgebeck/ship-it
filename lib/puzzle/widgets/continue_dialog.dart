@@ -14,8 +14,8 @@ class ContinueDialog extends StatefulWidget {
   State<ContinueDialog> createState() => _ContinueDialogState();
 }
 
-Color unselectedColor = Colors.blue;
-Color selectedColor = Colors.indigo;
+Color unselectedColorD = Colors.blue;
+Color selectedColorD = Colors.indigo;
 late List<bool> hasBeenPressedDiff;
 late List<bool> hasBeenPressedLike;
 
@@ -44,7 +44,7 @@ class _ContinueDialogState extends State<ContinueDialog> {
             children: [
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    primary: hasBeenPressedDiff[0] == true ? selectedColor : unselectedColor),
+                    primary: hasBeenPressedDiff[0] == true ? selectedColorD : unselectedColorD),
                 onPressed: () {
                   Provider.of<AppState>(context, listen: false).initializeLevel(
                     lvl: widget.levelLeftOff,
@@ -57,7 +57,7 @@ class _ContinueDialogState extends State<ContinueDialog> {
               const SizedBox(width: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    primary: hasBeenPressedDiff[1] == true ? selectedColor : unselectedColor),
+                    primary: hasBeenPressedDiff[1] == true ? selectedColorD : unselectedColorD),
                 onPressed: () {
                   Navigator.pop(context);
                 },

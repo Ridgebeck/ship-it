@@ -6,11 +6,14 @@ var theme = const BasicTheme();
 List<Level> levels = [
   Level(
     id: 0,
+    difficulty: 0.0,
+    minimumMoves: 1,
+    medianMoves: 2,
     blueprints: [
       Blueprint(
         position: 0,
         size: 3,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 3),
           ContainerContent(colorNumber: 1),
           ContainerContent(colorNumber: 3),
@@ -22,7 +25,7 @@ List<Level> levels = [
       Blueprint(
         position: 3,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 3),
           ContainerContent(colorNumber: 2),
           ContainerContent(colorNumber: 2),
@@ -33,7 +36,7 @@ List<Level> levels = [
       Blueprint(
         position: 4,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 2),
           ContainerContent(colorNumber: 2),
           ContainerContent(colorNumber: 1),
@@ -47,70 +50,14 @@ List<Level> levels = [
   ),
   Level(
     id: 1,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(position: 4, isWarehouse: true, size: 4),
-      Blueprint(position: 5, isWarehouse: true, size: 6),
-      // Blueprint(position: 6, isWarehouse: true, size: 6),
-      // Blueprint(position: 7, isWarehouse: true, size: 6),
-      // Blueprint(position: 8, isWarehouse: true, size: 6),
-      // Blueprint(position: 9, isWarehouse: true, size: 6),
-      // Blueprint(position: 10, isWarehouse: true, size: 6),
-      // Blueprint(position: 11, isWarehouse: true, size: 6),
-      // Blueprint(position: 12, isWarehouse: true, size: 6),
-      // Blueprint(position: 13, isWarehouse: true, size: 6),
-      // Blueprint(position: 14, isWarehouse: true, size: 6),
-      // Blueprint(position: 15, isWarehouse: true, size: 6),
-    ],
-  ),
-  Level(
-    id: 2,
+    minimumMoves: 8,
+    medianMoves: 8,
+    difficulty: 0.62,
     blueprints: [
       Blueprint(
         position: 0,
         size: 2,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
         ],
@@ -119,7 +66,7 @@ List<Level> levels = [
       Blueprint(
         position: 1,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 0, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
@@ -130,7 +77,7 @@ List<Level> levels = [
       Blueprint(
         position: 2,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
@@ -142,12 +89,337 @@ List<Level> levels = [
     ],
   ),
   Level(
+    id: 2,
+    minimumMoves: 7,
+    medianMoves: 8,
+    difficulty: 0.70,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(position: 3, isWarehouse: true, size: 2),
+    ],
+  ),
+  Level(
     id: 3,
+    minimumMoves: 16,
+    medianMoves: 18,
+    difficulty: 1.20,
     blueprints: [
       Blueprint(
         position: 0,
         size: 4,
-        containerContents: [
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(position: 4, isWarehouse: true, size: 2),
+      Blueprint(position: 5, isWarehouse: true, size: 2),
+      Blueprint(position: 6, isWarehouse: true, size: 2),
+    ],
+  ),
+  Level(
+    id: 4,
+    minimumMoves: 16,
+    medianMoves: 19,
+    difficulty: 1.34,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(position: 4, isWarehouse: true, size: 2),
+      Blueprint(position: 5, isWarehouse: true, size: 2),
+      Blueprint(position: 6, isWarehouse: true, size: 2),
+      Blueprint(position: 7, isWarehouse: true, size: 2),
+    ],
+  ),
+  Level(
+    id: 5,
+    minimumMoves: 18,
+    medianMoves: 20,
+    difficulty: 1.37,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(
+        position: 4,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 4,
+      ),
+      Blueprint(position: 5, isWarehouse: true, size: 2),
+      Blueprint(position: 6, isWarehouse: true, size: 2),
+      Blueprint(position: 7, isWarehouse: true, size: 2),
+    ],
+  ),
+  Level(
+    id: 6,
+    minimumMoves: 14,
+    medianMoves: 14,
+    difficulty: 1.39,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(position: 4, isWarehouse: true, size: 6),
+    ],
+  ),
+  Level(
+    id: 7,
+    minimumMoves: 14,
+    medianMoves: 15,
+    difficulty: 1.47,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(position: 4, isWarehouse: true, size: 4),
+      Blueprint(position: 5, isWarehouse: true, size: 6),
+    ],
+  ),
+  Level(
+    id: 8,
+    minimumMoves: 18,
+    medianMoves: 20,
+    difficulty: 1.52,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 4,
+        containerContents: const [
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
@@ -158,7 +430,7 @@ List<Level> levels = [
       Blueprint(
         position: 1,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
           ContainerContent(colorNumber: 4, isHazardous: false),
@@ -169,7 +441,7 @@ List<Level> levels = [
       Blueprint(
         position: 2,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
@@ -180,7 +452,7 @@ List<Level> levels = [
       Blueprint(
         position: 3,
         size: 2,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
         ],
@@ -189,7 +461,7 @@ List<Level> levels = [
       Blueprint(
         position: 4,
         size: 6,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
@@ -204,925 +476,16 @@ List<Level> levels = [
     ],
   ),
   Level(
-    id: 4,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 2,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(position: 3, isWarehouse: true, size: 6),
-    ],
-  ),
-  Level(
-    id: 5,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(position: 3, isWarehouse: true, size: 2),
-    ],
-  ),
-  Level(
-    id: 6,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(position: 4, isWarehouse: true, size: 2),
-      Blueprint(position: 5, isWarehouse: true, size: 2),
-      Blueprint(position: 6, isWarehouse: true, size: 2),
-      Blueprint(position: 7, isWarehouse: true, size: 2),
-    ],
-  ),
-  Level(
-    id: 7,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(position: 4, isWarehouse: true, size: 6),
-    ],
-  ),
-  Level(
-    id: 8,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 4,
-      ),
-      Blueprint(position: 5, isWarehouse: true, size: 2),
-      Blueprint(position: 6, isWarehouse: true, size: 2),
-      Blueprint(position: 7, isWarehouse: true, size: 2),
-      Blueprint(position: 8, isWarehouse: true, size: 2),
-      Blueprint(position: 9, isWarehouse: true, size: 2),
-    ],
-  ),
-  Level(
     id: 9,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 2,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-        ],
-        shipColorNumber: 4,
-      ),
-      Blueprint(
-        position: 5,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-        ],
-        shipColorNumber: 5,
-      ),
-      Blueprint(position: 6, isWarehouse: true, size: 4),
-      Blueprint(position: 7, isWarehouse: true, size: 6),
-    ],
-  ),
-  Level(
-    id: 10,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-        ],
-        shipColorNumber: 4,
-      ),
-      Blueprint(
-        position: 5,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-        ],
-        shipColorNumber: 5,
-      ),
-      Blueprint(
-        position: 6,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-        ],
-        shipColorNumber: 6,
-      ),
-      Blueprint(
-        position: 7,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-        ],
-        shipColorNumber: 7,
-      ),
-      Blueprint(position: 8, isWarehouse: true, size: 2),
-      Blueprint(position: 9, isWarehouse: true, size: 2),
-      Blueprint(position: 10, isWarehouse: true, size: 2),
-      Blueprint(position: 11, isWarehouse: true, size: 2),
-      Blueprint(position: 12, isWarehouse: true, size: 2),
-    ],
-  ),
-  Level(
-    id: 11,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(position: 4, isWarehouse: true, size: 4),
-    ],
-  ),
-  Level(
-    id: 12,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 2,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 4,
-      ),
-      Blueprint(
-        position: 5,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 5,
-      ),
-      Blueprint(position: 6, isWarehouse: true, size: 4),
-      Blueprint(position: 7, isWarehouse: true, size: 6),
-    ],
-  ),
-  Level(
-    id: 13,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 4,
-      ),
-      Blueprint(
-        position: 5,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 5,
-      ),
-      Blueprint(
-        position: 6,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-        ],
-        shipColorNumber: 6,
-      ),
-      Blueprint(
-        position: 7,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-        ],
-        shipColorNumber: 7,
-      ),
-      Blueprint(position: 8, isWarehouse: true, size: 2),
-      Blueprint(position: 9, isWarehouse: true, size: 2),
-      Blueprint(position: 10, isWarehouse: true, size: 2),
-      Blueprint(position: 11, isWarehouse: true, size: 2),
-      Blueprint(position: 12, isWarehouse: true, size: 2),
-    ],
-  ),
-  Level(
-    id: 14,
-    isHazardMode: true,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: true),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: true),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: true),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: true),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: true),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 4,
-      ),
-      Blueprint(
-        position: 5,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 5,
-      ),
-      Blueprint(position: 6, isWarehouse: true, size: 5),
-      Blueprint(position: 7, isWarehouse: true, size: 6),
-    ],
-  ),
-  Level(
-    id: 15,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 4,
-      ),
-      Blueprint(
-        position: 5,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 5,
-      ),
-      Blueprint(position: 6, isWarehouse: true, size: 6),
-    ],
-  ),
-  Level(
-    id: 16,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 4,
-      ),
-      Blueprint(
-        position: 5,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-        ],
-        shipColorNumber: 5,
-      ),
-      Blueprint(
-        position: 6,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-        ],
-        shipColorNumber: 6,
-      ),
-      Blueprint(
-        position: 7,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-        ],
-        shipColorNumber: 7,
-      ),
-      Blueprint(position: 8, isWarehouse: true, size: 2),
-      Blueprint(position: 9, isWarehouse: true, size: 2),
-      Blueprint(position: 10, isWarehouse: true, size: 2),
-      Blueprint(position: 11, isWarehouse: true, size: 2),
-      Blueprint(position: 12, isWarehouse: true, size: 2),
-    ],
-  ),
-  Level(
-    id: 17,
+    minimumMoves: 22,
+    medianMoves: 24,
+    difficulty: 1.80,
     isHazardMode: true,
     blueprints: [
       Blueprint(
         position: 0,
         size: 6,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 4, isHazardous: true),
           ContainerContent(colorNumber: 0, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
@@ -1135,7 +498,7 @@ List<Level> levels = [
       Blueprint(
         position: 1,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 0, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
@@ -1147,7 +510,7 @@ List<Level> levels = [
       Blueprint(
         position: 2,
         size: 6,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
@@ -1160,7 +523,7 @@ List<Level> levels = [
       Blueprint(
         position: 3,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 4, isHazardous: true),
           ContainerContent(colorNumber: 4, isHazardous: true),
@@ -1172,7 +535,7 @@ List<Level> levels = [
       Blueprint(
         position: 4,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 4, isHazardous: true),
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
@@ -1186,208 +549,771 @@ List<Level> levels = [
     ],
   ),
   Level(
-    id: 18,
+    id: 10,
+    minimumMoves: 10,
+    medianMoves: 10,
+    difficulty: 2.00,
     blueprints: [
       Blueprint(
         position: 0,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
+        size: 2,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
         ],
         shipColorNumber: 0,
       ),
       Blueprint(
         position: 1,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
         ],
         shipColorNumber: 1,
       ),
       Blueprint(
         position: 2,
-        size: 2,
-        containerContents: [
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(position: 3, isWarehouse: true, size: 6),
+    ],
+  ),
+  Level(
+    id: 11,
+    minimumMoves: 27,
+    medianMoves: 29,
+    difficulty: 2.14,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(
+        position: 4,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 4,
+      ),
+      Blueprint(position: 5, isWarehouse: true, size: 2),
+      Blueprint(position: 6, isWarehouse: true, size: 2),
+      Blueprint(position: 7, isWarehouse: true, size: 2),
+      Blueprint(position: 8, isWarehouse: true, size: 2),
+      Blueprint(position: 9, isWarehouse: true, size: 2),
+    ],
+  ),
+  Level(
+    id: 12,
+    minimumMoves: 15,
+    medianMoves: 15,
+    difficulty: 2.22,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(position: 4, isWarehouse: true, size: 4),
+    ],
+  ),
+  Level(
+    id: 13,
+    minimumMoves: 29,
+    medianMoves: 28,
+    difficulty: 2.30,
+    isHazardMode: true,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: true),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: true),
         ],
         shipColorNumber: 2,
       ),
       Blueprint(
         position: 3,
         size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
+        containerContents: const [
           ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: true),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: true),
         ],
         shipColorNumber: 3,
       ),
       Blueprint(
         position: 4,
         size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: false),
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: true),
+          ContainerContent(colorNumber: 0, isHazardous: false),
         ],
         shipColorNumber: 4,
       ),
       Blueprint(
         position: 5,
         size: 5,
-        containerContents: [
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 5,
+      ),
+      Blueprint(position: 6, isWarehouse: true, size: 5),
+      Blueprint(position: 7, isWarehouse: true, size: 6),
+    ],
+  ),
+  Level(
+    id: 14,
+    minimumMoves: 26,
+    medianMoves: 28,
+    difficulty: 2.43,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(
+        position: 4,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 4,
+      ),
+      Blueprint(position: 5, isWarehouse: true, size: 2),
+      Blueprint(position: 6, isWarehouse: true, size: 2),
+      Blueprint(position: 7, isWarehouse: true, size: 2),
+    ],
+  ),
+  Level(
+    id: 15,
+    minimumMoves: 32,
+    medianMoves: 33,
+    difficulty: 2.54,
+    isHazardMode: true,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: true),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: true),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: true),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: true),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(
+        position: 4,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: true),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 4,
+      ),
+      Blueprint(
+        position: 5,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 5,
+      ),
+      Blueprint(position: 6, isWarehouse: true, size: 5),
+      Blueprint(position: 7, isWarehouse: true, size: 6),
+    ],
+  ),
+  Level(
+    id: 16,
+    minimumMoves: 27,
+    medianMoves: 29,
+    difficulty: 2.55,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 2,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(
+        position: 4,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 4,
+      ),
+      Blueprint(
+        position: 5,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 5, isHazardous: false),
           ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 5,
+      ),
+      Blueprint(position: 6, isWarehouse: true, size: 4),
+      Blueprint(position: 7, isWarehouse: true, size: 6),
+    ],
+  ),
+  Level(
+    id: 17,
+    minimumMoves: 30,
+    medianMoves: 32,
+    difficulty: 2.62,
+    isHazardMode: true,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: true),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: true),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(
+        position: 4,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 6, isHazardous: true),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: true),
+        ],
+        shipColorNumber: 4,
+      ),
+      Blueprint(
+        position: 5,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
         ],
         shipColorNumber: 5,
       ),
       Blueprint(
         position: 6,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 5, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: true),
+        ],
+        shipColorNumber: 6,
+      ),
+      Blueprint(position: 7, isWarehouse: true, size: 5),
+      Blueprint(position: 8, isWarehouse: true, size: 6),
+    ],
+  ),
+  Level(
+    id: 18,
+    minimumMoves: 29,
+    medianMoves: 32,
+    difficulty: 2.69,
+    isHazardMode: true,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: true),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: true),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: true),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: true),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(
+        position: 4,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: true),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 4,
+      ),
+      Blueprint(
+        position: 5,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+        ],
+        shipColorNumber: 5,
+      ),
+      Blueprint(position: 6, isWarehouse: true, size: 5),
+      Blueprint(position: 7, isWarehouse: true, size: 6),
+    ],
+  ),
+  Level(
+    id: 19,
+    minimumMoves: 33,
+    medianMoves: 36,
+    difficulty: 2.91,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 5,
+        containerContents: const [
           ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(
+        position: 4,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+        ],
+        shipColorNumber: 4,
+      ),
+      Blueprint(
+        position: 5,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+        ],
+        shipColorNumber: 5,
+      ),
+      Blueprint(
+        position: 6,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
         ],
         shipColorNumber: 6,
       ),
       Blueprint(
         position: 7,
         size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
+        containerContents: const [
+          ContainerContent(colorNumber: 7, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
         ],
         shipColorNumber: 7,
       ),
-      Blueprint(
-        position: 8,
-        size: 2,
-        containerContents: [
-          ContainerContent(colorNumber: 8, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 8,
-      ),
-      Blueprint(position: 9, isWarehouse: true, size: 4),
-      Blueprint(position: 10, isWarehouse: true, size: 6),
-    ],
-  ),
-  Level(
-    id: 19,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 4,
-      ),
-      Blueprint(
-        position: 5,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-        ],
-        shipColorNumber: 5,
-      ),
-      Blueprint(
-        position: 6,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 6,
-      ),
-      Blueprint(position: 7, isWarehouse: true, size: 2),
-      Blueprint(position: 8, isWarehouse: true, size: 2),
-      Blueprint(position: 9, isWarehouse: true, size: 2),
-      Blueprint(position: 10, isWarehouse: true, size: 2),
+      Blueprint(position: 8, isWarehouse: true, size: 4),
+      Blueprint(position: 9, isWarehouse: true, size: 6),
     ],
   ),
   Level(
     id: 20,
+    minimumMoves: 26,
+    medianMoves: 29,
+    difficulty: 3.04,
     isHazardMode: true,
     blueprints: [
       Blueprint(
         position: 0,
         size: 3,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
@@ -1397,7 +1323,7 @@ List<Level> levels = [
       Blueprint(
         position: 1,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
@@ -1409,7 +1335,7 @@ List<Level> levels = [
       Blueprint(
         position: 2,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 0, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
@@ -1421,7 +1347,7 @@ List<Level> levels = [
       Blueprint(
         position: 3,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 5, isHazardous: true),
           ContainerContent(colorNumber: 3, isHazardous: false),
@@ -1433,7 +1359,7 @@ List<Level> levels = [
       Blueprint(
         position: 4,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 5, isHazardous: true),
           ContainerContent(colorNumber: 4, isHazardous: false),
@@ -1444,7 +1370,7 @@ List<Level> levels = [
       Blueprint(
         position: 5,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
@@ -1459,608 +1385,93 @@ List<Level> levels = [
   ),
   Level(
     id: 21,
+    minimumMoves: 26,
+    medianMoves: 29,
+    difficulty: 3.10,
     blueprints: [
       Blueprint(
         position: 0,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(
+        position: 4,
         size: 2,
-        containerContents: [
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
+        containerContents: const [
           ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
         ],
         shipColorNumber: 4,
       ),
       Blueprint(
         position: 5,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-        ],
-        shipColorNumber: 5,
-      ),
-      Blueprint(
-        position: 6,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-        ],
-        shipColorNumber: 6,
-      ),
-      Blueprint(
-        position: 7,
         size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-        ],
-        shipColorNumber: 7,
-      ),
-      Blueprint(position: 8, isWarehouse: true, size: 4),
-      Blueprint(position: 9, isWarehouse: true, size: 6),
-    ],
-  ),
-  Level(
-    id: 22,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(position: 4, isWarehouse: true, size: 2),
-      Blueprint(position: 5, isWarehouse: true, size: 2),
-      Blueprint(position: 6, isWarehouse: true, size: 2),
-    ],
-  ),
-  Level(
-    id: 23,
-    isHazardMode: true,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: true),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: true),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: true),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: true),
+        containerContents: const [
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 5,
-        containerContents: [
           ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: true),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 4,
-      ),
-      Blueprint(
-        position: 5,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 4, isHazardous: false),
         ],
         shipColorNumber: 5,
       ),
-      Blueprint(position: 6, isWarehouse: true, size: 5),
+      Blueprint(position: 6, isWarehouse: true, size: 4),
       Blueprint(position: 7, isWarehouse: true, size: 6),
     ],
   ),
   Level(
-    id: 24,
+    id: 22,
+    minimumMoves: 36,
+    medianMoves: 38,
+    difficulty: 3.14,
     blueprints: [
       Blueprint(
         position: 0,
         size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 2,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 2,
-        containerContents: [
-          ContainerContent(colorNumber: 8, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 4,
-      ),
-      Blueprint(
-        position: 5,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 8, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 5,
-      ),
-      Blueprint(
-        position: 6,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 6,
-      ),
-      Blueprint(
-        position: 7,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 7,
-      ),
-      Blueprint(
-        position: 8,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-        ],
-        shipColorNumber: 8,
-      ),
-      Blueprint(position: 9, isWarehouse: true, size: 4),
-      Blueprint(position: 10, isWarehouse: true, size: 6),
-    ],
-  ),
-  Level(
-    id: 25,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 4,
-      ),
-      Blueprint(position: 5, isWarehouse: true, size: 2),
-      Blueprint(position: 6, isWarehouse: true, size: 2),
-      Blueprint(position: 7, isWarehouse: true, size: 2),
-    ],
-  ),
-  Level(
-    id: 26,
-    isHazardMode: true,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: true),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: true),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 6, isHazardous: true),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: true),
-        ],
-        shipColorNumber: 4,
-      ),
-      Blueprint(
-        position: 5,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 5,
-      ),
-      Blueprint(
-        position: 6,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: true),
-        ],
-        shipColorNumber: 6,
-      ),
-      Blueprint(position: 7, isWarehouse: true, size: 5),
-      Blueprint(position: 8, isWarehouse: true, size: 6),
-    ],
-  ),
-  Level(
-    id: 27,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 9, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 9, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 2,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 9, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 4,
-      ),
-      Blueprint(
-        position: 5,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 9, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 5,
-      ),
-      Blueprint(
-        position: 6,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-        ],
-        shipColorNumber: 6,
-      ),
-      Blueprint(
-        position: 7,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 8, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: false),
-        ],
-        shipColorNumber: 7,
-      ),
-      Blueprint(
-        position: 8,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-        ],
-        shipColorNumber: 8,
-      ),
-      Blueprint(
-        position: 9,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-        ],
-        shipColorNumber: 9,
-      ),
-      Blueprint(position: 10, isWarehouse: true, size: 4),
-      Blueprint(position: 11, isWarehouse: true, size: 6),
-    ],
-  ),
-  Level(
-    id: 28,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 3,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 6, isHazardous: false),
           ContainerContent(colorNumber: 8, isHazardous: false),
@@ -2070,7 +1481,7 @@ List<Level> levels = [
       Blueprint(
         position: 1,
         size: 3,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
@@ -2080,7 +1491,7 @@ List<Level> levels = [
       Blueprint(
         position: 2,
         size: 3,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 8, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
@@ -2090,7 +1501,7 @@ List<Level> levels = [
       Blueprint(
         position: 3,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: false),
@@ -2102,7 +1513,7 @@ List<Level> levels = [
       Blueprint(
         position: 4,
         size: 3,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 5, isHazardous: false),
@@ -2112,7 +1523,7 @@ List<Level> levels = [
       Blueprint(
         position: 5,
         size: 3,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
@@ -2122,7 +1533,7 @@ List<Level> levels = [
       Blueprint(
         position: 6,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 6, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
@@ -2133,7 +1544,7 @@ List<Level> levels = [
       Blueprint(
         position: 7,
         size: 3,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 0, isHazardous: false),
           ContainerContent(colorNumber: 6, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
@@ -2143,7 +1554,7 @@ List<Level> levels = [
       Blueprint(
         position: 8,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 6, isHazardous: false),
           ContainerContent(colorNumber: 8, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
@@ -2158,179 +1569,293 @@ List<Level> levels = [
     ],
   ),
   Level(
-    id: 29,
-    isHazardMode: true,
+    id: 23,
+    minimumMoves: 31,
+    medianMoves: 35,
+    difficulty: 3.41,
     blueprints: [
       Blueprint(
         position: 0,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: true),
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: true),
-          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: true),
         ],
         shipColorNumber: 0,
       ),
       Blueprint(
         position: 1,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: true),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
         ],
         shipColorNumber: 1,
       ),
       Blueprint(
         position: 2,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
+        size: 6,
+        containerContents: const [
           ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
         ],
         shipColorNumber: 2,
       ),
       Blueprint(
         position: 3,
-        size: 6,
-        containerContents: [
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 6, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
         ],
         shipColorNumber: 3,
       ),
       Blueprint(
         position: 4,
-        size: 3,
-        containerContents: [
+        size: 4,
+        containerContents: const [
           ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: true),
-          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
         ],
         shipColorNumber: 4,
       ),
       Blueprint(
         position: 5,
-        size: 5,
-        containerContents: [
+        size: 4,
+        containerContents: const [
           ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
         ],
         shipColorNumber: 5,
       ),
-      Blueprint(position: 6, isWarehouse: true, size: 5),
-      Blueprint(position: 7, isWarehouse: true, size: 6),
+      Blueprint(
+        position: 6,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 6,
+      ),
+      Blueprint(position: 7, isWarehouse: true, size: 2),
+      Blueprint(position: 8, isWarehouse: true, size: 2),
+      Blueprint(position: 9, isWarehouse: true, size: 2),
+      Blueprint(position: 10, isWarehouse: true, size: 2),
     ],
   ),
   Level(
-    id: 30,
+    id: 24,
+    minimumMoves: 32,
+    medianMoves: 36,
+    difficulty: 3.45,
     blueprints: [
       Blueprint(
         position: 0,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 8, isHazardous: false),
         ],
         shipColorNumber: 0,
       ),
       Blueprint(
         position: 1,
         size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 6, isHazardous: false),
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 6, isHazardous: false),
           ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 6, isHazardous: false),
         ],
         shipColorNumber: 1,
       ),
       Blueprint(
         position: 2,
-        size: 6,
-        containerContents: [
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
         ],
         shipColorNumber: 2,
       ),
       Blueprint(
         position: 3,
-        size: 5,
-        containerContents: [
+        size: 2,
+        containerContents: const [
           ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
         ],
         shipColorNumber: 3,
       ),
       Blueprint(
         position: 4,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
+        size: 2,
+        containerContents: const [
+          ContainerContent(colorNumber: 8, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
         ],
         shipColorNumber: 4,
       ),
       Blueprint(
         position: 5,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 8, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
         ],
         shipColorNumber: 5,
       ),
       Blueprint(
         position: 6,
         size: 5,
-        containerContents: [
+        containerContents: const [
+          ContainerContent(colorNumber: 0, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
         ],
         shipColorNumber: 6,
       ),
       Blueprint(
         position: 7,
-        size: 4,
-        containerContents: [
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 7,
+      ),
+      Blueprint(
+        position: 8,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+        ],
+        shipColorNumber: 8,
+      ),
+      Blueprint(position: 9, isWarehouse: true, size: 4),
+      Blueprint(position: 10, isWarehouse: true, size: 6),
+    ],
+  ),
+  Level(
+    id: 25,
+    minimumMoves: 31,
+    medianMoves: 33,
+    difficulty: 3.46,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 2,
+        containerContents: const [
           ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(
+        position: 4,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 4,
+      ),
+      Blueprint(
+        position: 5,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+        ],
+        shipColorNumber: 5,
+      ),
+      Blueprint(
+        position: 6,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: false),
+        ],
+        shipColorNumber: 6,
+      ),
+      Blueprint(
+        position: 7,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
         ],
         shipColorNumber: 7,
       ),
@@ -2339,77 +1864,16 @@ List<Level> levels = [
     ],
   ),
   Level(
-    id: 31,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 4,
-      ),
-      Blueprint(position: 5, isWarehouse: true, size: 2),
-      Blueprint(position: 6, isWarehouse: true, size: 2),
-      Blueprint(position: 7, isWarehouse: true, size: 2),
-    ],
-  ),
-  Level(
-    id: 32,
+    id: 26,
+    minimumMoves: 35,
+    medianMoves: 39,
+    difficulty: 3.72,
     isHazardMode: true,
     blueprints: [
       Blueprint(
         position: 0,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 6, isHazardous: false),
@@ -2420,7 +1884,7 @@ List<Level> levels = [
       Blueprint(
         position: 1,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 6, isHazardous: false),
@@ -2432,7 +1896,7 @@ List<Level> levels = [
       Blueprint(
         position: 2,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: true),
@@ -2443,7 +1907,7 @@ List<Level> levels = [
       Blueprint(
         position: 3,
         size: 6,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: true),
@@ -2456,7 +1920,7 @@ List<Level> levels = [
       Blueprint(
         position: 4,
         size: 3,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 5, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
@@ -2466,7 +1930,7 @@ List<Level> levels = [
       Blueprint(
         position: 5,
         size: 3,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 0, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
@@ -2476,7 +1940,7 @@ List<Level> levels = [
       Blueprint(
         position: 6,
         size: 6,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: true),
@@ -2489,7 +1953,7 @@ List<Level> levels = [
       Blueprint(
         position: 7,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 0, isHazardous: false),
           ContainerContent(colorNumber: 6, isHazardous: false),
           ContainerContent(colorNumber: 5, isHazardous: false),
@@ -2503,465 +1967,15 @@ List<Level> levels = [
     ],
   ),
   Level(
-    id: 33,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 4,
-      ),
-      Blueprint(
-        position: 5,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: false),
-        ],
-        shipColorNumber: 5,
-      ),
-      Blueprint(
-        position: 6,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 6,
-      ),
-      Blueprint(
-        position: 7,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: false),
-        ],
-        shipColorNumber: 7,
-      ),
-      Blueprint(
-        position: 8,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 8,
-      ),
-      Blueprint(position: 9, isWarehouse: true, size: 4),
-      Blueprint(position: 10, isWarehouse: true, size: 6),
-    ],
-  ),
-  Level(
-    id: 34,
+    id: 27,
+    minimumMoves: 40,
+    medianMoves: 43,
+    difficulty: 3.73,
     blueprints: [
       Blueprint(
         position: 0,
         size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-        ],
-        shipColorNumber: 4,
-      ),
-      Blueprint(
-        position: 5,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 5,
-      ),
-      Blueprint(
-        position: 6,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 6,
-      ),
-      Blueprint(position: 7, isWarehouse: true, size: 2),
-      Blueprint(position: 8, isWarehouse: true, size: 2),
-      Blueprint(position: 9, isWarehouse: true, size: 2),
-      Blueprint(position: 10, isWarehouse: true, size: 2),
-    ],
-  ),
-  Level(
-    id: 35,
-    isHazardMode: true,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 8, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 9, isHazardous: true),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 9, isHazardous: true),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 9, isHazardous: true),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-        ],
-        shipColorNumber: 4,
-      ),
-      Blueprint(
-        position: 5,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 5,
-      ),
-      Blueprint(
-        position: 6,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-        ],
-        shipColorNumber: 6,
-      ),
-      Blueprint(
-        position: 7,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 9, isHazardous: true),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: false),
-        ],
-        shipColorNumber: 7,
-      ),
-      Blueprint(
-        position: 8,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 9, isHazardous: true),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-        ],
-        shipColorNumber: 8,
-      ),
-      Blueprint(
-        position: 9,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-        ],
-        shipColorNumber: 9,
-      ),
-      Blueprint(position: 10, isWarehouse: true, size: 5),
-      Blueprint(position: 11, isWarehouse: true, size: 6),
-    ],
-  ),
-  Level(
-    id: 36,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 8, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-        ],
-        shipColorNumber: 0,
-      ),
-      Blueprint(
-        position: 1,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 8, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 9, isHazardous: false),
-        ],
-        shipColorNumber: 1,
-      ),
-      Blueprint(
-        position: 2,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-        ],
-        shipColorNumber: 2,
-      ),
-      Blueprint(
-        position: 3,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 8, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-        ],
-        shipColorNumber: 3,
-      ),
-      Blueprint(
-        position: 4,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-        ],
-        shipColorNumber: 4,
-      ),
-      Blueprint(
-        position: 5,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 9, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-        ],
-        shipColorNumber: 5,
-      ),
-      Blueprint(
-        position: 6,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 9, isHazardous: false),
-          ContainerContent(colorNumber: 9, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-        ],
-        shipColorNumber: 6,
-      ),
-      Blueprint(
-        position: 7,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 9, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-        ],
-        shipColorNumber: 7,
-      ),
-      Blueprint(
-        position: 8,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 8, isHazardous: false),
-          ContainerContent(colorNumber: 9, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-        ],
-        shipColorNumber: 8,
-      ),
-      Blueprint(
-        position: 9,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-        ],
-        shipColorNumber: 9,
-      ),
-      Blueprint(position: 10, isWarehouse: true, size: 4),
-      Blueprint(position: 11, isWarehouse: true, size: 6),
-    ],
-  ),
-  Level(
-    id: 37,
-    blueprints: [
-      Blueprint(
-        position: 0,
-        size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
@@ -2972,7 +1986,7 @@ List<Level> levels = [
       Blueprint(
         position: 1,
         size: 3,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 4, isHazardous: false),
@@ -2982,7 +1996,7 @@ List<Level> levels = [
       Blueprint(
         position: 2,
         size: 6,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 6, isHazardous: false),
@@ -2995,7 +2009,7 @@ List<Level> levels = [
       Blueprint(
         position: 3,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
@@ -3007,7 +2021,7 @@ List<Level> levels = [
       Blueprint(
         position: 4,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 7, isHazardous: false),
           ContainerContent(colorNumber: 5, isHazardous: false),
           ContainerContent(colorNumber: 5, isHazardous: false),
@@ -3019,7 +2033,7 @@ List<Level> levels = [
       Blueprint(
         position: 5,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
@@ -3031,7 +2045,7 @@ List<Level> levels = [
       Blueprint(
         position: 6,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 6, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 4, isHazardous: false),
@@ -3042,7 +2056,7 @@ List<Level> levels = [
       Blueprint(
         position: 7,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: false),
           ContainerContent(colorNumber: 6, isHazardous: false),
@@ -3058,129 +2072,649 @@ List<Level> levels = [
     ],
   ),
   Level(
-    id: 38,
-    isHazardMode: true,
+    id: 28,
+    minimumMoves: 39,
+    medianMoves: 41,
+    difficulty: 3.73,
     blueprints: [
       Blueprint(
         position: 0,
         size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 7, isHazardous: false),
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 5,
+        containerContents: const [
           ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: true),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
           ContainerContent(colorNumber: 6, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(
+        position: 4,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+        ],
+        shipColorNumber: 4,
+      ),
+      Blueprint(
+        position: 5,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+        ],
+        shipColorNumber: 5,
+      ),
+      Blueprint(
+        position: 6,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+        ],
+        shipColorNumber: 6,
+      ),
+      Blueprint(
+        position: 7,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+        ],
+        shipColorNumber: 7,
+      ),
+      Blueprint(position: 8, isWarehouse: true, size: 2),
+      Blueprint(position: 9, isWarehouse: true, size: 2),
+      Blueprint(position: 10, isWarehouse: true, size: 2),
+      Blueprint(position: 11, isWarehouse: true, size: 2),
+      Blueprint(position: 12, isWarehouse: true, size: 2),
+    ],
+  ),
+  Level(
+    id: 29,
+    minimumMoves: 39,
+    medianMoves: 43,
+    difficulty: 3.80,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
         ],
         shipColorNumber: 0,
       ),
       Blueprint(
         position: 1,
         size: 4,
-        containerContents: [
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
         ],
         shipColorNumber: 1,
       ),
       Blueprint(
         position: 2,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
+        size: 4,
+        containerContents: const [
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
         ],
         shipColorNumber: 2,
       ),
       Blueprint(
         position: 3,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: true),
-          ContainerContent(colorNumber: 8, isHazardous: true),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
+        size: 4,
+        containerContents: const [
           ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
         ],
         shipColorNumber: 3,
       ),
       Blueprint(
         position: 4,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
         ],
         shipColorNumber: 4,
       ),
       Blueprint(
         position: 5,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 8, isHazardous: true),
-          ContainerContent(colorNumber: 3, isHazardous: false),
+        size: 5,
+        containerContents: const [
           ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
         ],
         shipColorNumber: 5,
       ),
       Blueprint(
         position: 6,
         size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
         ],
         shipColorNumber: 6,
       ),
       Blueprint(
         position: 7,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+        ],
+        shipColorNumber: 7,
+      ),
+      Blueprint(position: 8, isWarehouse: true, size: 2),
+      Blueprint(position: 9, isWarehouse: true, size: 2),
+      Blueprint(position: 10, isWarehouse: true, size: 2),
+      Blueprint(position: 11, isWarehouse: true, size: 2),
+      Blueprint(position: 12, isWarehouse: true, size: 2),
+    ],
+  ),
+  Level(
+    id: 30,
+    minimumMoves: 33,
+    medianMoves: 35,
+    difficulty: 4.25,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
           ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 2,
+        containerContents: const [
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(
+        position: 4,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 8, isHazardous: false),
+        ],
+        shipColorNumber: 4,
+      ),
+      Blueprint(
+        position: 5,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+        ],
+        shipColorNumber: 5,
+      ),
+      Blueprint(
+        position: 6,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+        ],
+        shipColorNumber: 6,
+      ),
+      Blueprint(
+        position: 7,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
         ],
         shipColorNumber: 7,
       ),
       Blueprint(
         position: 8,
-        size: 5,
-        containerContents: [
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: true),
+        size: 2,
+        containerContents: const [
+          ContainerContent(colorNumber: 8, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
         ],
         shipColorNumber: 8,
       ),
-      Blueprint(position: 9, isWarehouse: true, size: 5),
+      Blueprint(position: 9, isWarehouse: true, size: 4),
       Blueprint(position: 10, isWarehouse: true, size: 6),
     ],
   ),
   Level(
-    id: 39,
+    id: 31,
+    minimumMoves: 38,
+    medianMoves: 41,
+    difficulty: 4.26,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(
+        position: 4,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 4,
+      ),
+      Blueprint(
+        position: 5,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 8, isHazardous: false),
+        ],
+        shipColorNumber: 5,
+      ),
+      Blueprint(
+        position: 6,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 6,
+      ),
+      Blueprint(
+        position: 7,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 8, isHazardous: false),
+          ContainerContent(colorNumber: 8, isHazardous: false),
+        ],
+        shipColorNumber: 7,
+      ),
+      Blueprint(
+        position: 8,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 8,
+      ),
+      Blueprint(position: 9, isWarehouse: true, size: 4),
+      Blueprint(position: 10, isWarehouse: true, size: 6),
+    ],
+  ),
+  Level(
+    id: 32,
+    minimumMoves: 44,
+    medianMoves: 47,
+    difficulty: 4.47,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(
+        position: 4,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 4,
+      ),
+      Blueprint(
+        position: 5,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 5,
+      ),
+      Blueprint(
+        position: 6,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+        ],
+        shipColorNumber: 6,
+      ),
+      Blueprint(
+        position: 7,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+        ],
+        shipColorNumber: 7,
+      ),
+      Blueprint(position: 8, isWarehouse: true, size: 2),
+      Blueprint(position: 9, isWarehouse: true, size: 2),
+      Blueprint(position: 10, isWarehouse: true, size: 2),
+      Blueprint(position: 11, isWarehouse: true, size: 2),
+      Blueprint(position: 12, isWarehouse: true, size: 2),
+    ],
+  ),
+  Level(
+    id: 33,
+    minimumMoves: 37,
+    medianMoves: 40,
+    difficulty: 4.50,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(
+        position: 4,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 4,
+      ),
+      Blueprint(
+        position: 5,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+        ],
+        shipColorNumber: 5,
+      ),
+      Blueprint(
+        position: 6,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 6,
+      ),
+      Blueprint(position: 7, isWarehouse: true, size: 2),
+      Blueprint(position: 8, isWarehouse: true, size: 2),
+      Blueprint(position: 9, isWarehouse: true, size: 2),
+      Blueprint(position: 10, isWarehouse: true, size: 2),
+    ],
+  ),
+  Level(
+    id: 34,
+    minimumMoves: 44,
+    medianMoves: 47,
+    difficulty: 5.73,
     blueprints: [
       Blueprint(
         position: 0,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
@@ -3191,7 +2725,7 @@ List<Level> levels = [
       Blueprint(
         position: 1,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 5, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 6, isHazardous: false),
@@ -3202,7 +2736,7 @@ List<Level> levels = [
       Blueprint(
         position: 2,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 8, isHazardous: false),
           ContainerContent(colorNumber: 5, isHazardous: false),
           ContainerContent(colorNumber: 8, isHazardous: false),
@@ -3214,7 +2748,7 @@ List<Level> levels = [
       Blueprint(
         position: 3,
         size: 6,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 6, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: false),
           ContainerContent(colorNumber: 8, isHazardous: false),
@@ -3227,7 +2761,7 @@ List<Level> levels = [
       Blueprint(
         position: 4,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
@@ -3239,7 +2773,7 @@ List<Level> levels = [
       Blueprint(
         position: 5,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 8, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 6, isHazardous: false),
@@ -3251,7 +2785,7 @@ List<Level> levels = [
       Blueprint(
         position: 6,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 6, isHazardous: false),
           ContainerContent(colorNumber: 4, isHazardous: false),
@@ -3263,7 +2797,7 @@ List<Level> levels = [
       Blueprint(
         position: 7,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 8, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: false),
@@ -3274,7 +2808,7 @@ List<Level> levels = [
       Blueprint(
         position: 8,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 5, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: false),
@@ -3288,12 +2822,340 @@ List<Level> levels = [
     ],
   ),
   Level(
-    id: 40,
+    id: 35,
+    minimumMoves: 21,
+    medianMoves: 22,
+    difficulty: 6.88,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(
+        position: 4,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 4,
+      ),
+      Blueprint(
+        position: 5,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 5,
+      ),
+      Blueprint(position: 6, isWarehouse: true, size: 6),
+    ],
+  ),
+  Level(
+    id: 36,
+    minimumMoves: 51,
+    medianMoves: 56,
+    difficulty: 8.04,
+    isHazardMode: true,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 8, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 9, isHazardous: true),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 9, isHazardous: true),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 9, isHazardous: true),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 8, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(
+        position: 4,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+        ],
+        shipColorNumber: 4,
+      ),
+      Blueprint(
+        position: 5,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 8, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 5,
+      ),
+      Blueprint(
+        position: 6,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 6,
+      ),
+      Blueprint(
+        position: 7,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 9, isHazardous: true),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 8, isHazardous: false),
+        ],
+        shipColorNumber: 7,
+      ),
+      Blueprint(
+        position: 8,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 9, isHazardous: true),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+        ],
+        shipColorNumber: 8,
+      ),
+      Blueprint(
+        position: 9,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 8, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 9,
+      ),
+      Blueprint(position: 10, isWarehouse: true, size: 5),
+      Blueprint(position: 11, isWarehouse: true, size: 6),
+    ],
+  ),
+  Level(
+    id: 37,
+    minimumMoves: 44,
+    medianMoves: 53,
+    difficulty: 8.31,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 9, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 9, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 8, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 2,
+        containerContents: const [
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 8, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(
+        position: 4,
+        size: 3,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 9, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+        ],
+        shipColorNumber: 4,
+      ),
+      Blueprint(
+        position: 5,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 9, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 5,
+      ),
+      Blueprint(
+        position: 6,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 8, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+        ],
+        shipColorNumber: 6,
+      ),
+      Blueprint(
+        position: 7,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 8, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 8, isHazardous: false),
+        ],
+        shipColorNumber: 7,
+      ),
+      Blueprint(
+        position: 8,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+        ],
+        shipColorNumber: 8,
+      ),
+      Blueprint(
+        position: 9,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 8, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+        ],
+        shipColorNumber: 9,
+      ),
+      Blueprint(position: 10, isWarehouse: true, size: 4),
+      Blueprint(position: 11, isWarehouse: true, size: 6),
+    ],
+  ),
+  Level(
+    id: 38,
+    minimumMoves: 64,
+    medianMoves: 67,
+    difficulty: 8.79,
     blueprints: [
       Blueprint(
         position: 0,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
@@ -3305,7 +3167,7 @@ List<Level> levels = [
       Blueprint(
         position: 1,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 6, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: false),
           ContainerContent(colorNumber: 4, isHazardous: false),
@@ -3316,7 +3178,7 @@ List<Level> levels = [
       Blueprint(
         position: 2,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 6, isHazardous: false),
           ContainerContent(colorNumber: 9, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
@@ -3328,7 +3190,7 @@ List<Level> levels = [
       Blueprint(
         position: 3,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 5, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
@@ -3339,7 +3201,7 @@ List<Level> levels = [
       Blueprint(
         position: 4,
         size: 6,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
           ContainerContent(colorNumber: 10, isHazardous: false),
@@ -3352,7 +3214,7 @@ List<Level> levels = [
       Blueprint(
         position: 5,
         size: 6,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
@@ -3365,7 +3227,7 @@ List<Level> levels = [
       Blueprint(
         position: 6,
         size: 3,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 9, isHazardous: false),
@@ -3375,7 +3237,7 @@ List<Level> levels = [
       Blueprint(
         position: 7,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 5, isHazardous: false),
           ContainerContent(colorNumber: 10, isHazardous: false),
@@ -3387,7 +3249,7 @@ List<Level> levels = [
       Blueprint(
         position: 8,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 10, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 8, isHazardous: false),
@@ -3398,7 +3260,7 @@ List<Level> levels = [
       Blueprint(
         position: 9,
         size: 4,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 1, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: false),
@@ -3409,7 +3271,7 @@ List<Level> levels = [
       Blueprint(
         position: 10,
         size: 5,
-        containerContents: [
+        containerContents: const [
           ContainerContent(colorNumber: 7, isHazardous: false),
           ContainerContent(colorNumber: 5, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
@@ -3426,124 +3288,253 @@ List<Level> levels = [
     ],
   ),
   Level(
-    id: 41,
+    id: 39,
+    minimumMoves: 46,
+    medianMoves: 49,
+    difficulty: 9.29,
     isHazardMode: true,
     blueprints: [
       Blueprint(
         position: 0,
         size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
+        containerContents: const [
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 8, isHazardous: true),
           ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
         ],
         shipColorNumber: 0,
       ),
       Blueprint(
         position: 1,
         size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
+        containerContents: const [
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
         ],
         shipColorNumber: 1,
       ),
       Blueprint(
         position: 2,
-        size: 3,
-        containerContents: [
-          ContainerContent(colorNumber: 9, isHazardous: true),
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
           ContainerContent(colorNumber: 2, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
         ],
         shipColorNumber: 2,
       ),
       Blueprint(
         position: 3,
-        size: 4,
-        containerContents: [
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 3, isHazardous: false),
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 8, isHazardous: true),
+          ContainerContent(colorNumber: 8, isHazardous: true),
           ContainerContent(colorNumber: 5, isHazardous: false),
           ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
         ],
         shipColorNumber: 3,
       ),
       Blueprint(
         position: 4,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 9, isHazardous: true),
-          ContainerContent(colorNumber: 1, isHazardous: false),
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
         ],
         shipColorNumber: 4,
       ),
       Blueprint(
         position: 5,
-        size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 6, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: false),
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 8, isHazardous: true),
           ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: false),
-          ContainerContent(colorNumber: 9, isHazardous: true),
-          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
         ],
         shipColorNumber: 5,
       ),
       Blueprint(
         position: 6,
         size: 6,
-        containerContents: [
-          ContainerContent(colorNumber: 4, isHazardous: false),
+        containerContents: const [
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
           ContainerContent(colorNumber: 3, isHazardous: false),
-          ContainerContent(colorNumber: 9, isHazardous: true),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+        ],
+        shipColorNumber: 6,
+      ),
+      Blueprint(
+        position: 7,
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+        ],
+        shipColorNumber: 7,
+      ),
+      Blueprint(
+        position: 8,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
           ContainerContent(colorNumber: 5, isHazardous: false),
-          ContainerContent(colorNumber: 9, isHazardous: true),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 8, isHazardous: true),
+        ],
+        shipColorNumber: 8,
+      ),
+      Blueprint(position: 9, isWarehouse: true, size: 5),
+      Blueprint(position: 10, isWarehouse: true, size: 6),
+    ],
+  ),
+  Level(
+    id: 40,
+    minimumMoves: 53,
+    medianMoves: 57,
+    difficulty: 10.40,
+    blueprints: [
+      Blueprint(
+        position: 0,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 8, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+        ],
+        shipColorNumber: 0,
+      ),
+      Blueprint(
+        position: 1,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 8, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 9, isHazardous: false),
+        ],
+        shipColorNumber: 1,
+      ),
+      Blueprint(
+        position: 2,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+        ],
+        shipColorNumber: 2,
+      ),
+      Blueprint(
+        position: 3,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 8, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
+        ],
+        shipColorNumber: 3,
+      ),
+      Blueprint(
+        position: 4,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+        ],
+        shipColorNumber: 4,
+      ),
+      Blueprint(
+        position: 5,
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 3, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 9, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+        ],
+        shipColorNumber: 5,
+      ),
+      Blueprint(
+        position: 6,
+        size: 4,
+        containerContents: const [
+          ContainerContent(colorNumber: 9, isHazardous: false),
+          ContainerContent(colorNumber: 9, isHazardous: false),
+          ContainerContent(colorNumber: 3, isHazardous: false),
           ContainerContent(colorNumber: 6, isHazardous: false),
         ],
         shipColorNumber: 6,
       ),
       Blueprint(
         position: 7,
-        size: 3,
-        containerContents: [
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 2, isHazardous: false),
+          ContainerContent(colorNumber: 9, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
-          ContainerContent(colorNumber: 4, isHazardous: false),
-          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 8, isHazardous: false),
+          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
         ],
         shipColorNumber: 7,
       ),
       Blueprint(
         position: 8,
-        size: 3,
-        containerContents: [
+        size: 5,
+        containerContents: const [
+          ContainerContent(colorNumber: 8, isHazardous: false),
+          ContainerContent(colorNumber: 9, isHazardous: false),
           ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 1, isHazardous: false),
+          ContainerContent(colorNumber: 5, isHazardous: false),
           ContainerContent(colorNumber: 6, isHazardous: false),
         ],
         shipColorNumber: 8,
       ),
       Blueprint(
         position: 9,
-        size: 5,
-        containerContents: [
+        size: 6,
+        containerContents: const [
+          ContainerContent(colorNumber: 5, isHazardous: false),
           ContainerContent(colorNumber: 1, isHazardous: false),
-          ContainerContent(colorNumber: 8, isHazardous: false),
-          ContainerContent(colorNumber: 7, isHazardous: false),
-          ContainerContent(colorNumber: 2, isHazardous: false),
           ContainerContent(colorNumber: 0, isHazardous: false),
+          ContainerContent(colorNumber: 4, isHazardous: false),
+          ContainerContent(colorNumber: 6, isHazardous: false),
+          ContainerContent(colorNumber: 7, isHazardous: false),
         ],
         shipColorNumber: 9,
       ),
-      Blueprint(position: 10, isWarehouse: true, size: 5),
+      Blueprint(position: 10, isWarehouse: true, size: 4),
       Blueprint(position: 11, isWarehouse: true, size: 6),
     ],
   ),

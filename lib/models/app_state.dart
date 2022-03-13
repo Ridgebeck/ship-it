@@ -1,7 +1,10 @@
 import 'dart:math';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
+//import 'package:just_audio/just_audio.dart';
+import 'package:rive/rive.dart';
 import 'package:ship_it/levels/levels.dart';
 import 'package:ship_it/models/models.dart';
 import 'package:ship_it/puzzle/puzzle_state.dart';
@@ -12,7 +15,219 @@ import '../constants.dart';
 
 class AppState extends ChangeNotifier {
   /// selected theme
-  PuzzleTheme _currentPuzzleTheme = BasicTheme();
+  final PuzzleTheme _currentPuzzleTheme = const BasicTheme();
+
+  /// sound settings
+  //final AudioPlayer _bgMusicPlayer = AudioPlayer();
+  AudioPlayer _bgMusicPlayer = AudioPlayer();
+  AudioCache audioCache = AudioCache();
+  //audioPlayer.play("assets/audio/background_music.mp3", isLocal: true);
+  bool _soundIsOn = true;
+  bool get soundIsOn => _soundIsOn;
+  // toggle sound setting before game starts
+  void toggleSound() {
+    _soundIsOn = !_soundIsOn;
+    notifyListeners();
+  }
+
+  void loadBGMusic() async {
+    // preloads asset by default
+    //await _bgMusicPlayer.setAsset("audio/background_music.mp3");
+    //await _bgMusicPlayer.setVolume(0.2);
+    //await _bgMusicPlayer.setLoopMode(LoopMode.all);
+
+    await _bgMusicPlayer.setReleaseMode(ReleaseMode.LOOP);
+    //_bgMusicPlayer.setVolume(1.0);
+
+    //_bgMusicPlayer.load();
+    //print("duration: $duration");
+  }
+
+  void startBGMusic() async {
+    print("start music");
+    //_bgMusicPlayer.play();
+    //_bgMusicPlayer = await audioCache.play("audio/background_music.mp3");
+
+    _bgMusicPlayer.play(
+      "https://firebasestorage.googleapis.com/v0/b/ship-it-ca92f.appspot.com/o/background_music"
+      ".mp3?alt=media&token=003ef1ca-256c-4301-aa45-121b31b6b2d7",
+      volume: 0.05,
+    );
+    //int result = await _bgMusicPlayer.play("assets/audio/background_music.mp3", isLocal: true);
+  }
+
+  void _pauseBGMusic() {
+    _bgMusicPlayer.pause();
+  }
+
+  // change sound setting in game
+  void changeSound(bool value) {
+    // play / stop bg music
+    if (value != _soundIsOn) {
+      if (value == true) {
+        startBGMusic();
+      } else {
+        _pauseBGMusic();
+      }
+    }
+    _soundIsOn = value;
+    notifyListeners();
+  }
+
+  void disposeAudioPlayers() {
+    print("dispose audio");
+    _bgMusicPlayer.dispose();
+  }
+
+  /// variables for tracking different loading states
+  bool _introAnimationIsFinished = false;
+  bool _localDataHasBeenLoaded = false;
+  bool _audioHasBeenLoaded = false;
+  bool _gameIsStarted = false;
+  bool _startMenuIsFinished = false;
+
+  /// art boards and SMIInputs
+  Artboard? _logoArtboard;
+  Artboard? _bgArtboard;
+  Artboard? _ringArtboard;
+  Map<int, Artboard> _stationArtboards = {};
+  Map<int, Artboard> _shipArtboards = {};
+  List<Map<int, Artboard>> _connectorArtboards = [{}, {}, {}];
+  List<Map<int, SMIInput<bool>>> _connectorInputs = [{}, {}, {}];
+  List<Map<int, Artboard>> _indicatorArtboards = [{}, {}, {}];
+  List<Map<int, SMIInput<bool>>> _indicatorInputs = [{}, {}, {}];
+  SMIInput<bool>? shouldFadeOut;
+  SMITrigger? ringInput;
+  // todo: test: remove?
+  SMIInput<bool>? rocketIsStarting;
+  SMIInput<bool>? rocketIsStarting2;
+
+  /// art board getters
+  Artboard? get logoArtboard => _logoArtboard;
+  Artboard? get bgArtboard => _bgArtboard;
+  Artboard? get ringArtboard => _ringArtboard;
+  Map<int, Artboard> get stationArtboards => _stationArtboards;
+  Map<int, Artboard> get shipArtboards => _shipArtboards;
+  Map<int, Artboard> getConnectorArtboards(i) => _connectorArtboards[i];
+  Map<int, Artboard> getIndicatorArtboards(i) => _indicatorArtboards[i];
+  Map<int, SMIInput<bool>> getIndicatorInputs(i) => _indicatorInputs[i];
+
+  /// art board setters
+  set logoArtboard(Artboard? ab) {
+    _logoArtboard = ab;
+    notifyListeners();
+  }
+
+  set bgArtboard(Artboard? ab) {
+    _bgArtboard = ab;
+    notifyListeners();
+  }
+
+  set ringArtboard(Artboard? ab) {
+    _ringArtboard = ab;
+    notifyListeners();
+  }
+
+  void addStationArtboard(int number, Artboard ab) {
+    _stationArtboards[number] = ab;
+    notifyListeners();
+  }
+
+  void addShipArtboard(int number, Artboard ab) {
+    _shipArtboards[number] = ab;
+    notifyListeners();
+  }
+
+  void addConnectors(List<RiveLoaderReturnData> returnData) {
+    for (int lvl = 0; lvl < kDisplayedLevels; lvl++) {
+      for (int pos = 0; pos < kRegularShipWidthDivider * kRowsPerLevel; pos++) {
+        int indIdx = lvl * kRegularShipWidthDivider * kRowsPerLevel + pos;
+        _connectorArtboards[lvl][pos] = returnData[indIdx].artboard;
+        //_connectorInputs[lvl][pos] =
+        //    returnData[indIdx].boolInputs.firstWhere((element) => element.name == "finished");
+      }
+    }
+  }
+
+  void addIndicators(List<RiveLoaderReturnData> returnData) {
+    for (int lvl = 0; lvl < kDisplayedLevels; lvl++) {
+      for (int pos = 0; pos < kRegularShipWidthDivider * kRowsPerLevel; pos++) {
+        int indIdx = lvl * kRegularShipWidthDivider * kRowsPerLevel + pos;
+        // print("level: $lvl");
+        // print("position: $pos");
+        // print("indIdx: $indIdx");
+
+        _indicatorArtboards[lvl][pos] = returnData[indIdx].artboard;
+        _indicatorInputs[lvl][pos] =
+            returnData[indIdx].boolInputs.firstWhere((element) => element.name == "finished");
+      }
+    }
+  }
+
+  void setConnector(int position, bool value) {
+    print("set connector $position to $value");
+    _connectorInputs[1][position]?.value = value;
+    notifyListeners();
+  }
+
+  void resetAllConnectors() {
+    for (int i = 0; i < kDisplayedLevels; i++) {
+      for (SMIInput<bool> input in _connectorInputs[i].values) {
+        input.value = false;
+      }
+    }
+  }
+
+  void setIndicator(int position, bool value) {
+    print("set indicator $position to $value");
+    _indicatorInputs[1][position]?.value = value;
+    notifyListeners();
+  }
+
+  void resetAllIndicators() {
+    for (int i = 0; i < kDisplayedLevels; i++) {
+      for (SMIInput<bool> input in _indicatorInputs[i].values) {
+        input.value = false;
+      }
+    }
+  }
+
+  /// get loading state variables
+  bool get introAnimationIsFinished => _introAnimationIsFinished;
+  bool get localDataHasBeenLoaded => _localDataHasBeenLoaded;
+  bool get _riveDataHasBeenLoaded =>
+      logoArtboard != null &&
+      shouldFadeOut != null &&
+      ringInput != null &&
+      bgArtboard != null &&
+      _stationArtboards.length == kSpaceStationVariants &&
+      _shipArtboards.length == kShipVariants;
+
+  bool get allDataHasBeenLoaded =>
+      _localDataHasBeenLoaded && _riveDataHasBeenLoaded; //&& _audioHasBeenLoaded;
+  bool get startMenuIsFinished => _startMenuIsFinished;
+  bool get gameIsStarted => _gameIsStarted;
+
+  /// set loading state variables
+  set introAnimationIsFinished(bool isFinished) {
+    _introAnimationIsFinished = isFinished;
+    notifyListeners();
+  }
+
+  set localDataHasBeenLoaded(bool isFinished) {
+    _localDataHasBeenLoaded = isFinished;
+    notifyListeners();
+  }
+
+  set gameIsStarted(bool start) {
+    _gameIsStarted = start;
+    notifyListeners();
+  }
+
+  set startMenuIsFinished(bool isFinished) {
+    _startMenuIsFinished = isFinished;
+    notifyListeners();
+  }
 
   /// variables for previous, current, and next puzzle
   late PuzzleState _previousPuzzleState;
@@ -39,8 +254,22 @@ class AppState extends ChangeNotifier {
   PuzzleState get currentPuzzleState => _currentPuzzleState;
   PuzzleState get nextPuzzleState => _nextPuzzleState;
 
-  /// get info about current level state
-  int get currentLevel => _currentPuzzleState.level.id;
+  /// get info about level state
+  int get currentLevelId => _currentPuzzleState.level.id; // todo: needed?
+  Level get previousLevel => _previousPuzzleState.level;
+  Level get currentLevel => _currentPuzzleState.level;
+  Level get nextLevel => _nextPuzzleState.level;
+
+  bool isHazardMode(int levelID) {
+    List<Level> levels = [
+      _previousPuzzleState.level,
+      _currentPuzzleState.level,
+      _nextPuzzleState.level
+    ];
+    return levels[levelID].isHazardMode;
+  }
+
+  /// info about moves and resets of current level
   int get currentMoves => _currentPuzzleState.numberOfMoves;
   int get currentResets => _currentPuzzleState.numberOfResets;
 
@@ -48,6 +277,8 @@ class AppState extends ChangeNotifier {
   PuzzleStatus get currentStatus => _currentPuzzleState.puzzleStatus;
   set puzzleStatus(PuzzleStatus status) {
     _currentPuzzleState = _currentPuzzleState.copyWith(puzzleStatus: status);
+    print("setting status");
+    notifyListeners();
   }
 
   /// get info about current selection
@@ -58,7 +289,19 @@ class AppState extends ChangeNotifier {
   DateTime get startTime => _startTimeLevel;
 
   /// animation values
-  double rotationAngle = 0;
+  bool _translateIntoView = false;
+  bool get translateIntoView => _translateIntoView;
+  set translateIntoView(bool isTrue) {
+    _translateIntoView = isTrue;
+    notifyListeners();
+  }
+
+  double _rotationAngle = 0;
+  double get rotationAngle => _rotationAngle;
+  set rotationAngle(double angle) {
+    _rotationAngle = angle;
+    notifyListeners();
+  }
 
   /// copy blueprint list
   List<Blueprint> _copyBlueprintList(List<Blueprint> listToCopy) {
@@ -71,29 +314,28 @@ class AppState extends ChangeNotifier {
         level: _currentPuzzleState.level.copyWith(blueprints: _copyBlueprintList(_blueprintList)));
   }
 
-  // void _changePuzzleStatus(PuzzleStatus puzzleStatus) {
-  //   _currentPuzzleState = _currentPuzzleState.copyWith(puzzleStatus: puzzleStatus);
-  // }
-
   /// move to next level
   void moveToNextLevel() async {
     // otherwise initialize next level
     initializeLevel(lvl: _currentPuzzleState.level.id + 1, update: true);
     // save current level locally
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setInt("level", currentLevel);
+    await prefs.setInt("level", currentLevelId);
     // log level progress in analytics
-    await FirebaseAnalytics.instance.logLevelUp(level: currentLevel);
+    await FirebaseAnalytics.instance.logLevelUp(level: currentLevelId);
     // set start time of current level
     _startTimeLevel = DateTime.now();
   }
 
   /// initialize the current level
-  void initializeLevel({required int lvl, bool update = false}) {
-    // todo: load from file or saved progress
+  void initializeLevel({required int lvl, bool update = false}) async {
+    // create puzzle states of all 3 levels (previous, current, next)
     _previousPuzzleState = PuzzleState(level: levels[lvl - 1], puzzleStatus: PuzzleStatus.complete);
     _currentPuzzleState = PuzzleState(level: levels[lvl], puzzleStatus: PuzzleStatus.active);
     _nextPuzzleState = PuzzleState(level: levels[lvl + 1], puzzleStatus: PuzzleStatus.inactive);
+
+    // set all indicator colors
+    _setIndicatorColors();
 
     // save a copy of the original puzzle state
     _lastSavedPuzzleState = _currentPuzzleState.copyWith();
@@ -109,7 +351,37 @@ class AppState extends ChangeNotifier {
     }
   }
 
-  /// increase and decrease move counter
+  /// set indicator colors for all 3 levels
+  void _setIndicatorColors() {
+    List<PuzzleState> puzzleStates = [_previousPuzzleState, _currentPuzzleState, _nextPuzzleState];
+    // go through previous, current and next levels
+    for (PuzzleState puzzleState in puzzleStates) {
+      List<Blueprint> blueprints = puzzleState.level.blueprints;
+      int index = puzzleStates.indexOf(puzzleState);
+      // todo: wait until..?
+      if (getIndicatorArtboards(index).length == 2 * kRegularShipWidthDivider) {
+        // go through all blueprints
+        for (int abIdx = 0; abIdx < blueprints.length; abIdx++) {
+          Artboard ab = getIndicatorArtboards(index)[abIdx]!;
+          Fill indicatorFill = ab.component("indicator color") as Fill;
+          // change color of warehouse to empty color
+          if (blueprints[abIdx].isWarehouse) {
+            indicatorFill.paint.color = theme.emptyVesselColor;
+          }
+          // change color of indicator to ship color if not a warehouse
+          else {
+            // print("puzzle $index");
+            // print("position $abIdx");
+            // print("color: ${theme.colorPalette[blueprints[abIdx].shipColorNumber!]}");
+            indicatorFill.paint.color = theme.colorPalette[blueprints[abIdx].shipColorNumber!];
+          }
+        }
+        //notifyListeners();
+      }
+    }
+  }
+
+  /// increase and decrease move and reset counters
   void _increaseMoveCounter() {
     // increase move counter in current puzzle state
     _currentPuzzleState = _currentPuzzleState.copyWith(
@@ -179,6 +451,7 @@ class AppState extends ChangeNotifier {
 
   /// handle user selection of any ship
   void clickOnPosition(int position) {
+    print("clicked on position: $position");
     // do not allow interactions with inactive or empty puzzles
     if (currentPuzzleState.puzzleStatus != PuzzleStatus.active ||
         currentPuzzleState.level.blueprints.isEmpty) {
@@ -256,7 +529,7 @@ class AppState extends ChangeNotifier {
   }
 
   _checkSpaceAndTransfer({required int position}) {
-    print("checking ${_selectedContent!.selectionIdx}");
+    print("checking move from ${_selectedContent!.selectionIdx} to $position");
     // do nothing if same ship was selected
     if (position == _selectedContent!.selectionIdx) {
       return;
@@ -273,11 +546,19 @@ class AppState extends ChangeNotifier {
             availableSpace >= _selectedContent!.lengthOfSelectedContent) {
       print("transfer");
       _transferContent(idxFrom: _selectedContent!.selectionIdx!, idxTo: position);
-      _deselectShipAndContent(_selectedContent!.selectionIdx!);
+      // reset indicator if it column was finished before
+      if (getIndicatorInputs(1)[_selectedContent!.selectionIdx!]!.value == true) {
+        setIndicator(_selectedContent!.selectionIdx!, false);
+      }
       _checkIfShipIsComplete(position);
+      _deselectShipAndContent(_selectedContent!.selectionIdx!);
       _checkIfPuzzleIsSolved();
 
       if (currentPuzzleState.puzzleStatus == PuzzleStatus.complete) {
+        print("complete!");
+        // open rocket holding mechanism
+        ringInput?.fire();
+
         _lastTurns = [_copyBlueprintList(_blueprintList)];
       } else {
         // remove oldest entry if list contains 5 moves or more
@@ -324,7 +605,7 @@ class AppState extends ChangeNotifier {
 
     // don't allow hazardous content be transferred into warehouse
     if (selectionIsHazardous && _blueprintList[idxTo].isWarehouse) {
-      print("DO NOT TRANSFER!");
+      //print("DO NOT TRANSFER!");
       return;
     }
     // increase move counter
@@ -332,6 +613,8 @@ class AppState extends ChangeNotifier {
 
     // remove contents from ship in original list
     _blueprintList[idxFrom].containerContents.removeWhere((e) => toRemove.contains(e));
+    notifyListeners();
+
     // add contents to ship in original list
     _blueprintList[idxTo] = _blueprintList[idxTo].copyWith(
       containerContents: _blueprintList[idxTo].containerContents + toAdd,
@@ -342,13 +625,14 @@ class AppState extends ChangeNotifier {
   bool _checkIfShipIsComplete(int position) {
     // check if ship that received content is complete
     if (_blueprintList[position].containerContents.length == _blueprintList[position].size) {
-      //print("ship $position is full!");
+      print("ship $position is full!");
       bool hasSameColor = _blueprintList[position].containerContents.every((content) =>
           content.colorNumber == _blueprintList[position].containerContents.first.colorNumber);
       bool isInRightSpot = _blueprintList[position].containerContents.first.colorNumber ==
           _blueprintList[position].shipColorNumber;
       if (hasSameColor && isInRightSpot) {
         print("ship $position is completed!");
+        setIndicator(position, true);
         return true;
       }
     }

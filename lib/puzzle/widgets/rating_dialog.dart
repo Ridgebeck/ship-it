@@ -36,7 +36,7 @@ class _RatingDialogState extends State<RatingDialog> {
 
   @override
   Widget build(BuildContext context) {
-    int level = Provider.of<AppState>(context, listen: false).currentLevel;
+    int level = Provider.of<AppState>(context, listen: false).currentLevelId;
 
     return FittedBox(
       child: Column(
@@ -130,7 +130,7 @@ class _RatingDialogState extends State<RatingDialog> {
                     // save data in Firestore
                     FirebaseFirestore.instance.collection("feedback").add({
                       "UID": FirebaseAuth.instance.currentUser!.uid,
-                      "level": Provider.of<AppState>(context, listen: false).currentLevel,
+                      "level": Provider.of<AppState>(context, listen: false).currentLevelId,
                       "moves": Provider.of<AppState>(context, listen: false).currentMoves,
                       "resets": Provider.of<AppState>(context, listen: false).currentResets,
                       "secondsNeeded": timePlayed.inSeconds,
